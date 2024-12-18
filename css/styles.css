@@ -12,6 +12,33 @@ body {
   height: 100vh;
   overflow: hidden;
   display: flex;
+  visibility: hidden;
+}
+
+.move-right {
+  animation: moveRight 0.7s forwards;
+}
+
+.move-left {
+  animation: moveLeft 0.5s forwards;
+}
+
+@keyframes moveRight {
+  0% {
+    transform: translateX(200%); /* Começa fora da tela à direita */
+  }
+  100% {
+    transform: translateX(0); /* Move para a posição original */
+  }
+}
+
+@keyframes moveLeft {
+  0% {
+    transform: translateX(0); /* Começa na posição original */
+  }
+  100% {
+    transform: translateX(-100%); /* Move completamente para a esquerda */
+  }
 }
 
 .image-container {
@@ -33,19 +60,6 @@ body {
 }
 
 /* Animação para mover os elementos para a esquerda */
-@keyframes moveLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-/* Estilos iniciais para os itens que serão movidos */
-.move-left {
-  animation: moveLeft 1s forwards;
-}
 
 .login {
   width: 60%;

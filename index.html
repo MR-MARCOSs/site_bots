@@ -45,25 +45,40 @@
     </div>
     </div>
     <script>
-      // Seleciona o link de "Register" e os elementos a serem movidos
-      const registerBtn = document.getElementById('register-link');
-      const elementsToMove = document.querySelectorAll('.form-container, .login, .image-container'); // Itens a mover
-    
-      // Adiciona um evento de clique ao link de "Register"
-      registerBtn.addEventListener('click', function(event) {
-        event.preventDefault(); // Impede o redirecionamento imediato
-        
-        // Para cada elemento, adicione a classe 'move-left' para animá-los
-        elementsToMove.forEach(element => {
-          element.classList.add('move-left');
-        });
-    
-        // Redireciona após 1 segundo (tempo da animação)
-        setTimeout(function() {
-          window.location.href = registerBtn.href; // Redireciona para a página de registro
-        }, 1000); // Atraso de 1 segundo para dar tempo de ver a animação
-      });
+      // Seleciona os elementos a serem movidos
+const elementsToMove = document.querySelectorAll('.form-container, .login, .image-container');
+
+// Ao carregar a página, aplique a animação de entrada
+window.addEventListener('load', function() {
+  // Atraso de 100ms para garantir que a página tenha carregado antes da animação
+  setTimeout(function() {
+    document.body.style.visibility = 'visible'; // Torna o corpo visível após o carregamento
+    elementsToMove.forEach(element => {
+      element.classList.add('move-right'); // Aplica a animação de movimento
+    });
+  }, 100);
+});
+
+// Seleciona o link de "Register" e os elementos a serem movidos
+const registerBtn = document.getElementById('register-link');
+
+// Adiciona um evento de clique ao link de "Register"
+registerBtn.addEventListener('click', function(event) {
+  event.preventDefault(); // Impede o redirecionamento imediato
+
+  // Para cada elemento, adicione a classe 'move-left' para animá-los
+  elementsToMove.forEach(element => {
+    element.classList.add('move-left');
+  });
+
+  // Redireciona após 1 segundo (tempo da animação)
+  setTimeout(function() {
+    window.location.href = registerBtn.href; // Redireciona para a página de registro
+  }, 500); // Atraso de 1 segundo para dar tempo de ver a animação
+});
+
     </script>
+    
     
     
  

@@ -37,5 +37,37 @@
     <div class="image-container">
         <img src="./register_robot.png">
     </div>
+    <script>
+        // Seleciona o link de "Login" e os elementos a serem movidos
+        const loginBtn = document.querySelector('.login-link');
+        const elementsToMove = document.querySelectorAll('.form-container, .register, .image-container'); // Itens a mover
+        
+        // Quando a página de registro for carregada, anima os elementos da direita para a esquerda
+        window.addEventListener('load', function() {
+  // Atraso de 100ms para garantir que a página tenha carregado antes da animação
+  setTimeout(function() {
+    document.body.style.visibility = 'visible'; // Torna o corpo visível após o carregamento
+    elementsToMove.forEach(element => {
+      element.classList.add('move-right'); // Aplica a animação de movimento
+    });
+  }, 100);
+});
+      
+        // Adiciona um evento de clique ao link de "Login"
+        loginBtn.addEventListener('click', function(event) {
+          event.preventDefault(); // Impede o redirecionamento imediato
+          
+          // Para cada elemento, adicione a classe 'move-left' para animá-los
+          elementsToMove.forEach(element => {
+            element.classList.add('move-left');
+          });
+      
+          // Redireciona após 1 segundo (tempo da animação)
+          setTimeout(function() {
+            window.location.href = loginBtn.href; // Redireciona para a página de login
+          }, 500); // Atraso de 1 segundo para dar tempo de ver a animação
+        });
+      </script>
+      
 </body>
 </html>

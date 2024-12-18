@@ -12,6 +12,34 @@
     height: 100vh;
     overflow: hidden; /* Impede barras de rolagem se a imagem for muito grande */
     display: flex; /* Importante: torna o body um flex container */
+    visibility: hidden;
+  }
+
+  
+.move-right {
+    animation: moveRight 0.7s forwards;
+  }
+  
+  .move-left {
+    animation: moveLeft 0.5s forwards;
+  }
+  
+  @keyframes moveRight {
+    0% {
+      transform: translateX(100%); /* Começa fora da tela à direita */
+    }
+    100% {
+      transform: translateX(0); /* Move para a posição original */
+    }
+  }
+  
+  @keyframes moveLeft {
+    0% {
+      transform: translateX(0); /* Começa na posição original */
+    }
+    100% {
+      transform: translateX(-200%); /* Move completamente para a esquerda */
+    }
   }
 
   .image-container {
@@ -127,6 +155,7 @@
       .login-link:hover {
         text-decoration: underline;
       }
+  
 
       @media screen and (max-width: 768px) {
         /* Ajuste da imagem */
