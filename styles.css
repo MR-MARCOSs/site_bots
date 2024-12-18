@@ -189,8 +189,10 @@ body {
   }
 
   /* Ajuste nos campos de entrada */
-  input {
-    padding: 12px;
+  .input-container input {
+  
+    padding: 12px 12px 12px 40px; /* Adiciona espaço para o ícone */
+    
   }
 
   button.login-btn {
@@ -229,7 +231,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 40%;
+    padding-top: 30%;
     padding-bottom: 5%; /* Começa o conteúdo abaixo da imagem */
     position: relative;
     z-index: 0;
@@ -254,8 +256,8 @@ body {
   }
 
   /* Ajuste nos campos de entrada */
-  input {
-    padding: 20px;
+  .input-container input {
+    padding: 14px 14px 14px 40px; /* Adiciona espaço para o ícone */
   }
 
   button.login-btn {
