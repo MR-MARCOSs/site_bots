@@ -63,12 +63,6 @@ body {
     margin: 3% auto;
   }
   
-  label {
-    margin-left:15%;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
   .input-container {
     position: relative;
     width: 75%;
@@ -261,7 +255,7 @@ body {
 
   /* Ajuste nos campos de entrada */
   input {
-    padding: 14px;
+    padding: 20px;
   }
 
   button.login-btn {
