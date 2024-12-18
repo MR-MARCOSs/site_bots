@@ -131,9 +131,6 @@ body {
     text-decoration: underline;
   }
   
-
-  
-
 @media screen and (max-width: 768px) {
   /* Ajuste da imagem */
   .image-container {
@@ -145,7 +142,6 @@ body {
     margin-bottom: 1%;
     border-radius: 50% 50% 50% 50%; /* Faz o topo circular */
     overflow: hidden;
-    
     left: 50%;
     transform: translateX(-50%); /* Centraliza horizontalmente */
     z-index: 1; /* Garante que a imagem fique sobre o conteúdo de login */
@@ -155,6 +151,7 @@ body {
   .image-container img {
     object-fit: cover; /* A imagem cobre completamente o círculo */
     object-position: center; /* Centraliza a imagem */
+    overflow: hidden;
   }
 
   /* Ajuste da área de login */
@@ -220,6 +217,7 @@ body {
   .image-container img {
     object-fit: cover; /* A imagem cobre completamente o círculo */
     object-position: center; /* Centraliza a imagem */
+    overflow: hidden;
   }
 
   /* Ajuste da área de login */
