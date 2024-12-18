@@ -233,7 +233,7 @@ button.login-btn:hover {
     margin-top: 17%;
     border-radius: 50% 50% 50% 50%; /* Faz o topo circular */
     overflow: hidden;
-    left: 50%;
+    left: 30%;
     transform: translateX(-50%); /* Centraliza horizontalmente */
     z-index: 1; /* Garante que a imagem fique sobre o conteúdo de login */
     box-shadow: 0 0 10px rgba(255, 255, 255);
