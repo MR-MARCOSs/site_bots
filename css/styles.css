@@ -160,19 +160,23 @@ button.login-btn:hover {
   /* Ajuste da imagem */
   .image-container {
     width: 180px;
-    height: 180px;
-    border-radius: 50%;
+    height: 180px; /* A imagem ocupa apenas metade da tela */
+    border-radius: 50%; /* Faz a imagem virar um círculo */
     position: absolute;
     margin-top: 4%;
     margin-bottom: 1%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
+    border-radius: 50% 50% 50% 50%; /* Faz o topo circular */
+    overflow: hidden;
+    left: 30%;
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    z-index: 1; /* Garante que a imagem fique sobre o conteúdo de login */
+    box-shadow: 0 0 10px rgba(255, 255, 255);
   }
 
   .image-container img {
-    object-fit: cover;
-    object-position: center;
+    object-fit: cover; /* A imagem cobre completamente o círculo */
+    object-position: center; /* Centraliza a imagem */
+    overflow: hidden;
   }
 
   /* Ajuste da área de login */
@@ -183,20 +187,34 @@ button.login-btn:hover {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 40%;
-    padding-bottom: 5%;
+    padding-bottom: 5%; /* Começa o conteúdo abaixo da imagem */
     position: relative;
     z-index: 0;
   }
 
+  /* Ajuste do formulário */
   .form-container {
     width: 80%;
     height: 90%;
     margin: 0 auto;
+    
+    overflow: visible;
+    background-color: rgb(30, 30, 30);
     padding: 20px;
+    box-shadow: none;
   }
 
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Ajusta o tamanho do título */
+    margin-bottom: 10px;
+    margin-top: 10px; /* Menor espaço abaixo do título */
+  }
+
+  /* Ajuste nos campos de entrada */
+  .input-container input {
+  
+    padding: 12px 12px 12px 40px; /* Adiciona espaço para o ícone */
+    
   }
 
   button.login-btn {
@@ -209,20 +227,25 @@ button.login-btn:hover {
   /* Ajuste da imagem */
   .image-container {
     width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    height: 200px; /* A imagem ocupa apenas metade da tela */
+    border-radius: 50%; /* Faz a imagem virar um círculo */
     position: absolute;
     margin-top: 17%;
+    border-radius: 50% 50% 50% 50%; /* Faz o topo circular */
+    overflow: hidden;
     left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    z-index: 1; /* Garante que a imagem fique sobre o conteúdo de login */
+    box-shadow: 0 0 10px rgba(255, 255, 255);
   }
 
   .image-container img {
-    object-fit: cover;
-    object-position: center;
+    object-fit: cover; /* A imagem cobre completamente o círculo */
+    object-position: center; /* Centraliza a imagem */
+    overflow: hidden;
   }
 
+  /* Ajuste da área de login */
   .login {
     width: 100%;
     background-color: rgb(30, 30, 30);
@@ -230,20 +253,32 @@ button.login-btn:hover {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 20%;
-    padding-bottom: 5%;
+    padding-bottom: 5%; /* Começa o conteúdo abaixo da imagem */
     position: relative;
     z-index: 0;
   }
 
+  /* Ajuste do formulário */
   .form-container {
     width: 100%;
     height: 100%;
     margin: 0 auto;
+    
+    overflow: visible;
+    background-color: rgb(30, 30, 30);
     padding: 10px;
+    box-shadow: none;
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Ajusta o tamanho do título */
+    margin-bottom: 11px;
+    margin-top: 10px; /* Menor espaço abaixo do título */
+  }
+
+  /* Ajuste nos campos de entrada */
+  .input-container input {
+    padding: 15px 15px 15px 40px; /* Adiciona espaço para o ícone */
   }
 
   button.login-btn {
