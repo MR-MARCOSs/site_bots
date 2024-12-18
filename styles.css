@@ -28,7 +28,9 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;  /* A imagem será redimensionada para caber inteiramente no contêiner */
-  object-position: center;  /* Centraliza a imagem dentro do contêiner */
+  object-position: center;
+  filter: drop-shadow(0 0 1rem rgb(255, 255, 255));
+    box-shadow: 1px 1px 1rem rgb(255, 255, 255);  /* Centraliza a imagem dentro do contêiner */
 }
 
 
@@ -51,7 +53,7 @@ body {
     flex-direction: column;
     justify-content: center;
     background-color: #1e1e1e;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(255, 255, 255);
     border-radius: 10px;
     overflow: hidden;
   }
