@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body>
   
@@ -15,28 +17,31 @@
 
     <!-- Right Side with Login Form -->
     <div class="login">
-      
-    
     <div class="form-container">
       <form class="login-form">
         <h2>Login</h2>
-        
+      
         <!-- Email Input -->
-        <p><label for="email">E-mail</label></p>
-        <input type="email" id="email" placeholder="Email" required>
-        
+        <div class="input-container">
+          <i class="fas fa-envelope"></i> <!-- Ícone de email -->
+          <input type="email" id="email" placeholder="Email" required>
+        </div>
+      
         <!-- Password Input -->
-        <p><label for="password">Senha</label></p>
-        <input type="password" id="password" placeholder="Password" required>
-        
+        <div class="input-container">
+          <i class="fas fa-lock"></i> <!-- Ícone de senha -->
+          <input type="password" id="password" placeholder="Password" required>
+        </div>
+      
         <!-- Submit Button -->
         <button type="submit" class="login-btn">Sign-on</button>
-
+      
         <!-- Register Link -->
         <p class="register-text">
           Don't have an account? <a href="#" class="register-link">Register</a>
         </p>
       </form>
+      
     </div>
     </div>
  

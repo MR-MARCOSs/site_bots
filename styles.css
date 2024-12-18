@@ -69,17 +69,33 @@ body {
     font-weight: bold;
   }
   
-  input {
+  .input-container {
+    position: relative;
     width: 75%;
-    padding: 2%;
-    margin: 0 auto;
-    margin-bottom: 4%;
+    margin: 0 auto 20px;
+  }
+  
+  .input-container i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #9b28e8;
+  }
+  
+  .input-container input {
+    width: 100%;
+    padding: 10px 10px 10px 40px; /* Adiciona espaço para o ícone */
     border: none;
     border-radius: 5px;
     background-color: #333;
     color: #fff;
-    display: block;
   }
+  
+  .input-container input:focus {
+    outline: 2px solid #9b28e8;
+  }
+  
   
   input:focus {
     outline: 2px solid #9b28e8;
@@ -120,6 +136,7 @@ body {
   .register-link:hover {
     text-decoration: underline;
   }
+  
 
   
 
