@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: red;
+  background-color: rgb(30, 30, 30);
   color: #fff;
   height: 100vh;
   overflow: hidden; /* Impede barras de rolagem se a imagem for muito grande */
