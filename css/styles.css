@@ -37,7 +37,7 @@ body {
     transform: translateX(0); /* Começa na posição original */
   }
   100% {
-    transform: translateX(-100%); /* Move completamente para a esquerda */
+    transform: translateX(-200%); /* Move completamente para a esquerda */
   }
 }
 
