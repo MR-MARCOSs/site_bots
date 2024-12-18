@@ -1,4 +1,4 @@
-/* Reset básico */ 
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -10,8 +10,8 @@ body {
   background-color: rgb(30, 30, 30);
   color: #fff;
   height: 100vh;
-  overflow: hidden; /* Impede barras de rolagem se a imagem for muito grande */
-  display: flex; /* Importante: torna o body um flex container */
+  overflow: hidden;
+  display: flex;
 }
 
 .image-container {
@@ -27,16 +27,28 @@ body {
 .image-container img {
   width: 100%;
   height: 100%;
-  object-fit: contain;  /* A imagem será redimensionada para caber inteiramente no contêiner */
-  object-position: bottom;
+  object-fit: contain;
   filter: drop-shadow(0 0 1rem rgb(255, 255, 255));
-    box-shadow: 1px 1px 1rem rgb(255, 255, 255);  /* Centraliza a imagem dentro do contêiner */
+  box-shadow: 1px 1px 1rem rgb(255, 255, 255);
 }
 
+/* Animação para mover os elementos para a esquerda */
+@keyframes moveLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
+/* Estilos iniciais para os itens que serão movidos */
+.move-left {
+  animation: moveLeft 1s forwards;
+}
 
 .login {
-  width: 60%; /* Ajuste a largura conforme necessário */
+  width: 60%;
   margin-left: auto;
   height: 100%;
   background: linear-gradient(to right, rgba(30, 30, 30, 0) 0%, rgba(30, 30, 30, 1) 10%, rgba(30, 30, 30, 1) 100%);
@@ -45,113 +57,108 @@ body {
   align-items: center;
 }
 
-  /* Formulário */
-  .form-container {
-    width: 45%;     /* Defina a largura do elemento */
-    margin-left: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #1e1e1e;
-    box-shadow: 0 0 15px rgba(255, 255, 255);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  h2 {
-    text-align: center;
-    margin: 3% auto;
-  }
-  
-  .input-container {
-    position: relative;
-    width: 75%;
-    margin: 0 auto 20px;
-  }
-  
-  .input-container i {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: #9b28e8;
-  }
-  
-  .input-container input {
-    width: 100%;
-    padding: 10px 10px 10px 40px; /* Adiciona espaço para o ícone */
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-  }
-  
-  .input-container input:focus {
-    outline: 2px solid #9b28e8;
-  }
-  
-  
-  input:focus {
-    outline: 2px solid #9b28e8;
-  }
-  
-  button.login-btn {
-    min-width: 75px;
-    width: 30%;
-    padding: 2%;
-    margin: 0 auto;
-    background-color: #9b28e8;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    display: block;
-    white-space: nowrap;
-  }
-  
-  button.login-btn:hover {
-    background-color: #6017b1;
-  }
-  
-  .register-text {
-    text-align: center;
-    margin-top: 5%;
-    margin-bottom: 3%;
-  }
-  
-  .register-link {
-    color: #9b28e8;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .register-link:hover {
-    text-decoration: underline;
-  }
-  
+.form-container {
+  width: 45%;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #1e1e1e;
+  box-shadow: 0 0 15px rgba(255, 255, 255);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+h2 {
+  text-align: center;
+  margin: 3% auto;
+}
+
+.input-container {
+  position: relative;
+  width: 75%;
+  margin: 0 auto 20px;
+}
+
+.input-container i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #9b28e8;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+}
+
+.input-container input:focus {
+  outline: 2px solid #9b28e8;
+}
+
+input:focus {
+  outline: 2px solid #9b28e8;
+}
+
+button.login-btn {
+  min-width: 75px;
+  width: 30%;
+  padding: 2%;
+  margin: 0 auto;
+  background-color: #9b28e8;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: block;
+  white-space: nowrap;
+}
+
+button.login-btn:hover {
+  background-color: #6017b1;
+}
+
+.register-text {
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+
+.register-link {
+  color: #9b28e8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+/* Ajustes responsivos */
 @media screen and (max-width: 768px) {
   /* Ajuste da imagem */
   .image-container {
     width: 180px;
-    height: 180px; /* A imagem ocupa apenas metade da tela */
-    border-radius: 50%; /* Faz a imagem virar um círculo */
+    height: 180px;
+    border-radius: 50%;
     position: absolute;
     margin-top: 4%;
     margin-bottom: 1%;
-    border-radius: 50% 50% 50% 50%; /* Faz o topo circular */
-    overflow: hidden;
     left: 50%;
-    transform: translateX(-50%); /* Centraliza horizontalmente */
-    z-index: 1; /* Garante que a imagem fique sobre o conteúdo de login */
-    box-shadow: 0 0 10px rgba(255, 255, 255);
+    transform: translateX(-50%);
+    z-index: 1;
   }
 
   .image-container img {
-    object-fit: cover; /* A imagem cobre completamente o círculo */
-    object-position: center; /* Centraliza a imagem */
-    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
   }
 
   /* Ajuste da área de login */
@@ -162,34 +169,20 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 40%;
-    padding-bottom: 5%; /* Começa o conteúdo abaixo da imagem */
+    padding-bottom: 5%;
     position: relative;
     z-index: 0;
   }
 
-  /* Ajuste do formulário */
   .form-container {
     width: 80%;
     height: 90%;
     margin: 0 auto;
-    
-    overflow: visible;
-    background-color: rgb(30, 30, 30);
     padding: 20px;
-    box-shadow: none;
   }
 
   h2 {
-    font-size: 1.2rem; /* Ajusta o tamanho do título */
-    margin-bottom: 10px;
-    margin-top: 10px; /* Menor espaço abaixo do título */
-  }
-
-  /* Ajuste nos campos de entrada */
-  .input-container input {
-  
-    padding: 12px 12px 12px 40px; /* Adiciona espaço para o ícone */
-    
+    font-size: 1.2rem;
   }
 
   button.login-btn {
@@ -202,25 +195,20 @@ body {
   /* Ajuste da imagem */
   .image-container {
     width: 200px;
-    height: 200px; /* A imagem ocupa apenas metade da tela */
-    border-radius: 50%; /* Faz a imagem virar um círculo */
+    height: 200px;
+    border-radius: 50%;
     position: absolute;
     margin-top: 17%;
-    border-radius: 50% 50% 50% 50%; /* Faz o topo circular */
-    overflow: hidden;
     left: 50%;
-    transform: translateX(-50%); /* Centraliza horizontalmente */
-    z-index: 1; /* Garante que a imagem fique sobre o conteúdo de login */
-    box-shadow: 0 0 10px rgba(255, 255, 255);
+    transform: translateX(-50%);
+    z-index: 1;
   }
 
   .image-container img {
-    object-fit: cover; /* A imagem cobre completamente o círculo */
-    object-position: center; /* Centraliza a imagem */
-    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
   }
 
-  /* Ajuste da área de login */
   .login {
     width: 100%;
     background-color: rgb(30, 30, 30);
@@ -228,32 +216,20 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 20%;
-    padding-bottom: 5%; /* Começa o conteúdo abaixo da imagem */
+    padding-bottom: 5%;
     position: relative;
     z-index: 0;
   }
 
-  /* Ajuste do formulário */
   .form-container {
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    
-    overflow: visible;
-    background-color: rgb(30, 30, 30);
     padding: 10px;
-    box-shadow: none;
   }
 
   h2 {
-    font-size: 1.5rem; /* Ajusta o tamanho do título */
-    margin-bottom: 11px;
-    margin-top: 10px; /* Menor espaço abaixo do título */
-  }
-
-  /* Ajuste nos campos de entrada */
-  .input-container input {
-    padding: 15px 15px 15px 40px; /* Adiciona espaço para o ícone */
+    font-size: 1.5rem;
   }
 
   button.login-btn {
