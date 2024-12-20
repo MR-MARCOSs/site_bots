@@ -1,6 +1,7 @@
 let dados = [
     {
         name: "Goobe",
+        img: "./assets/goobe.png",
         descricao: "Goobe the duck",
         endpoint: "...",
     },
