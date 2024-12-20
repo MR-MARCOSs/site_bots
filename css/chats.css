@@ -64,7 +64,7 @@
     width: 70px;
     height: 70px;
     display: block;
-    margin: 5% 0;
+    margin: 2.5% 0;
     margin-left: 5%;
     border-radius: 50% 50% 50% 50%;
   }
@@ -76,4 +76,42 @@
 
   .bot-disponiveis {
     margin-left: 5%;
+    margin-bottom: 2.5%;
+  }
+
+  .chat-conversation {
+    width: 59vh;
+    background-color: aqua;
+  }
+
+  .input-container {
+    position: relative;
+    width: 75%;
+    margin: 0 auto 20px;
+  }
+  
+  .input-container i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #9b28e8;
+  }
+  
+  .input-container input {
+    width: 100%;
+    padding: 10px 10px 10px 40px; /* Adiciona espaço para o ícone */
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .input-container input:focus {
+    outline: 2px solid #9b28e8;
+  }
+  
+  
+  input:focus {
+    outline: 2px solid #9b28e8;
   }
