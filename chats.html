@@ -12,7 +12,7 @@
     <div class="chatbots">
         <img src="./assets/user_example.jpg" alt="" class="user-profile-img">
         <p class="usermail">usermail@example.com</p>
-        <p>Bots Disponíveis:</p>
+        <p class="bot-disponiveis">Bots Disponíveis:</p>
         <section id="bots-list">
             
         </section>
@@ -31,18 +31,21 @@
         let section = document.getElementById("bots-list");
         let resultados = '';
         for (let dado of dados) {
-        name = dado.name
-        descricao = dado.descricao
-
+            let name = dado.name;
+            let descricao = dado.descricao;
+            let img = dado.img;  // Atribuindo o valor correto da imagem
+    
             resultados += `
-            <div class="item-resultado">
-                <img src="${img}" alt="${name}" class="bot-image">
-                <h2>
-                    <a href="#" target="_blank">${dado.name}</a>
-                </h2>
-                <p class="descricao-meta">${dado.descricao}</p>
-            </div>
-        `;
+                <div class="item-resultado">
+                    <img src="${img}" alt="${name}" class="bot-image">
+                    <div class="item-text">  <!-- Contêiner para o nome e a descrição -->
+                        <h2>
+                            <a href="#" target="_blank">${name}</a>
+                        </h2>
+                        <p class="descricao-meta">${descricao}</p>
+                    </div>
+                </div>
+            `;
         }
         section.innerHTML = resultados;
     </script>

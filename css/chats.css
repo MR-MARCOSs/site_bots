@@ -21,9 +21,59 @@
 
   .user-profile-img {
     object-fit: contain;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     display: block;
     margin: 10% auto;
+    margin-bottom: 5%;
+    border-radius: 50%;
+  }
+
+  .item-resultado {
+    display: flex;             /* Usa flexbox para alinhar itens horizontalmente */
+    align-items: center;       /* Alinha os itens verticalmente ao centro */
+    margin-bottom: 15px;       /* Espaçamento entre os itens */
+    gap: 5px;                 /* Espaçamento entre a imagem e o texto */
+}
+.item-text {
+  display: flex;
+  flex-direction: column;   /* Organiza o nome e a descrição em coluna */
+  justify-content: center;  /* Alinha o conteúdo de forma centralizada verticalmente */
+}
+
+.item-resultado h2 {
+  margin: 0;                /* Remove a margem */
+  font-size: 1.2em;         /* Ajuste no tamanho da fonte */
+  font-weight: bold;        /* Deixa o nome mais destacado */
+}
+
+/* Estilo para a descrição do bot */
+.descricao-meta {
+  color: #ffffff;              /* Cor mais suave para a descrição */
+  font-size: 0.9em;         /* Tamanho da fonte da descrição */
+}
+
+.item-text {
+  display: flex;
+  flex-direction: column;   /* Organiza o nome e a descrição em coluna */
+  justify-content: center;  /* Alinha o conteúdo de forma centralizada verticalmente */
+}
+
+  .bot-image {
+    object-fit: contain;
+    width: 70px;
+    height: 70px;
+    display: block;
+    margin: 5% 0;
+    margin-left: 5%;
     border-radius: 50% 50% 50% 50%;
+  }
+
+  .usermail {
+    text-align: center;
+    margin-bottom: 5%;
+  }
+
+  .bot-disponiveis {
+    margin-left: 5%;
   }
