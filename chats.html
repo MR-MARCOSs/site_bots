@@ -13,9 +13,9 @@
         <img src="./assets/user_example.jpg" alt="" class="user-profile-img">
         <p class="usermail">usermail@example.com</p>
         <p>Bots Disponíveis:</p>
-        <li>
-
-        </li>
+        <section id="bots-list">
+            
+        </section>
     </div>
     <div class="chat-conversation">
         <span>
@@ -26,5 +26,24 @@
             <input id="password" placeholder="Password">
         </div>
     </div>
+    <script src="bots.js"></script>
+    <script>
+        let section = document.getElementById("bots-list");
+        let resultados = '';
+        for (let dado of dados) {
+        name = dado.name
+        descricao = dado.descricao
+
+            resultados += `
+            <div class="item-resultado">
+                <h2>
+                    <a href="#" target="_blank">${dado.name}</a>
+                </h2>
+                <p class="descricao-meta">${dado.descricao}</p>
+            </div>
+        `;
+        }
+        section.innerHTML = resultados;
+    </script>
 </body>
 </html>
