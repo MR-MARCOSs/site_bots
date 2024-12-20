@@ -12,7 +12,7 @@
   }
 
   .chatbots {
-    width: 40vh;
+    width: 20vw;
     height: 98vh;
     margin-top: 1vh;
     margin-left: 1vh;
@@ -80,38 +80,42 @@
   }
 
   .chat-conversation {
-    width: 59vh;
+    width: 79vw;
+    height: 98vh;
+    margin-top: 1vh;
+    margin-right: 1vh;
     background-color: aqua;
-  }
+    position: relative; /* Para que o input seja posicionado em relação a este contêiner */
+    display: flex;
+    flex-direction: column;
+}
 
-  .input-container {
-    position: relative;
-    width: 75%;
-    margin: 0 auto 20px;
-  }
-  
-  .input-container i {
+.input-container {
+    position: absolute; /* Fixa o input na parte inferior */
+    bottom: 0; /* Coloca o input na parte inferior do contêiner */
+    left: 10%;
+    width: 80%; /* O input ocupa toda a largura disponível */
+    padding: 10px; /* Espaço ao redor do input */
+    background-color: #333; /* Cor do fundo do input */
+}
+
+.input-container i {
     position: absolute;
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
-    color: #9b28e8;
-  }
-  
-  .input-container input {
+    color: #3f3f3f;
+}
+
+.input-container input {
     width: 100%;
     padding: 10px 10px 10px 40px; /* Adiciona espaço para o ícone */
     border: none;
     border-radius: 5px;
     background-color: #333;
     color: #fff;
-  }
-  
-  .input-container input:focus {
+}
+
+.input-container input:focus {
     outline: 2px solid #9b28e8;
-  }
-  
-  
-  input:focus {
-    outline: 2px solid #9b28e8;
-  }
+}
