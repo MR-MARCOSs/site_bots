@@ -120,5 +120,5 @@
 }
 
 .input-container input:focus {
-    outline: 2px solid #9b28e8;
+    outline: none;
 }
