@@ -44,4 +44,4 @@ document.getElementById('userInput').addEventListener('keypress', (event) => {
 });
 
 // Exemplo de seleção de bot
-selectBot('bot1'); // Chame essa função quando o bot for selecionado
+ // Chame essa função quando o bot for selecionado
