@@ -83,20 +83,23 @@
 
   .chat-conversation {
     width: 80vw;
-    height: 99vh;
+    height: 90vh;
     margin-top: 0.5vh;
     margin-right: 0.5vh;
     background-color: #F1F1F1;
     position: relative; /* Para que o input seja posicionado em relação a este contêiner */
     display: flex;
     flex-direction: column;
+    gap: 10px; /* Espaço entre as mensagens */
+    overflow-y: auto;
+    justify-content: flex-end;
 }
 
 .input-container {
     position: absolute; /* Fixa o input na parte inferior */
     bottom: 0; /* Coloca o input na parte inferior do contêiner */
-    left: 10%;
-    width: 60%; /* O input ocupa toda a largura disponível */
+    left: 2.5%;
+    width: 75%; /* O input ocupa toda a largura disponível */
     padding: 10px; /* Espaço ao redor do input */
     background-color: #D9D9D9; /* Cor do fundo do input */
     border-radius: 10px;
@@ -133,15 +136,27 @@
 }
 
 .chat-message {
-  margin: 5px 0;
+  padding: 10px;
+  
+  max-width: 70%; /* Limita a largura máxima das mensagens */
+  word-wrap: break-word;
 }
 
 .user-message {
+  border-radius: 7px 0px 7px 7px;
+  margin-right: 2.5%;
   text-align: right;
   color: blue;
+  align-self: flex-end; /* Alinha a mensagem do usuário à direita */
+  background-color: #e0e0ff;
 }
 
+/* Estilo das mensagens do bot (alinhadas à esquerda) */
 .bot-message {
+  border-radius: 0px 7px 7px 7px;
+  margin-left: 2.5%;
   text-align: left;
   color: green;
+  align-self: flex-start; /* Alinha a mensagem do bot à esquerda */
+  background-color: #d3ffd3;
 }
