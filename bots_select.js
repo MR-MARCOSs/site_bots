@@ -2,6 +2,8 @@ let section = document.getElementById("bots-list");
 let resultados = '';
 let chatConversation = document.querySelector('.chat-conversation');
 let inputContainer = document.querySelector('.input-container');
+// Variável para rastrear o item selecionado atualmente
+let selectedItem = null;
 
 for (let dado of dados) {
     let name = dado.name;
@@ -11,7 +13,7 @@ for (let dado of dados) {
         <div class="item-resultado" onclick="selectBot('${name}')">
             <img src="${img}" alt="${name}" class="bot-image">
             <div class="item-text">
-                <h2><a href="#" target="_blank">${name}</a></h2>
+                <h2><a>${name}</a></h2>
                 <p class="descricao-meta">${descricao}</p>
             </div>
         </div>`;
@@ -22,6 +24,7 @@ section.innerHTML = resultados;
 
 function selectBot(botName) {
     const bot = dados.find(d => d.name === botName);
+
     if (bot) {
         chatConversation.innerHTML = ''; // Limpa a mensagem inicial
         const chatContainer = document.querySelector('.chat-conversation');
@@ -32,8 +35,20 @@ function selectBot(botName) {
 
         inputContainer.style.display = 'flex'; // Mostra o input
 
-       // Aqui você pode adicionar lógica adicional para iniciar a conversa com o bot selecionado
-       // Por exemplo, enviar uma mensagem para o servidor indicando qual bot foi escolhido
+
+        // Remove a cor roxa do item anteriormente selecionado
+        if (selectedItem) {
+            selectedItem.style.backgroundColor = '';
+        }
+
+        // Encontra o novo item selecionado e adiciona a cor roxa
+        const newItem = document.querySelector(`.item-resultado[onclick="selectBot('${botName}')"]`);
+        newItem.style.backgroundColor = 'purple'; // Define a cor de fundo como roxa
+
+        // Atualiza o item selecionado atualmente
+        selectedItem = newItem;
+
+
     }
 }
 

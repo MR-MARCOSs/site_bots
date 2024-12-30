@@ -42,6 +42,7 @@
 }
 
 .item-resultado h2 {
+  color: #F1F1F1;
   margin: 0;                /* Remove a margem */
   font-size: 1.2em;         /* Ajuste no tamanho da fonte */
   font-weight: bold;        /* Deixa o nome mais destacado */
