@@ -91,8 +91,6 @@
     display: flex;
     flex-direction: column;
     gap: 10px; /* Espaço entre as mensagens */
-    
-    justify-content: flex-end;
     overflow-y: auto;
 }
 
@@ -138,7 +136,7 @@
 
 .chat-message {
   padding: 10px;
-  margin-bottom: 1.5%;
+  margin-top: 1.5%;
   max-width: 70%; /* Limita a largura máxima das mensagens */
   word-wrap: break-word;
 }

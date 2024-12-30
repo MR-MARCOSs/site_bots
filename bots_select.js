@@ -26,7 +26,7 @@ function selectBot(botName) {
         chatConversation.innerHTML = ''; // Limpa a mensagem inicial
         const chatContainer = document.querySelector('.chat-conversation');
         const mensagemInicial = document.createElement('div');
-        mensagemInicial.className = `bot-message`;
+        mensagemInicial.className = `chat-message bot-message`;
         mensagemInicial.textContent = bot.descricao;
         chatContainer.appendChild(mensagemInicial);
 
