@@ -83,7 +83,7 @@
 
   .chat-conversation {
     width: 80vw;
-    max-height: 90vh;
+    max-height: 88vh;
     margin-top: 0.5vh;
     margin-right: 0.5vh;
     background-color: #F1F1F1;
@@ -91,8 +91,9 @@
     display: flex;
     flex-direction: column;
     gap: 10px; /* Espaço entre as mensagens */
+    
+    justify-content: flex-end;
     overflow-y: auto;
-    justify-content: flex-start;
 }
 
 .input-container {
