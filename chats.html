@@ -1,54 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/chats.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <style>
+        .input-container {
+            display: flex; /* Garante que o input e os ícones fiquem na mesma linha */
+            align-items: center; /* Alinha verticalmente os itens */
+        }
+    </style>
 </head>
+
 <body>
     <div class="chatbots">
         <img src="./assets/user_example.jpg" alt="" class="user-profile-img">
         <p class="usermail">usermail@example.com</p>
         <h2 class="bot-disponiveis">Bots Disponíveis:</h2>
         <section id="bots-list">
-            
         </section>
     </div>
     <div class="chat-conversation">
+        <p>Selecione um bot e inicie a conversa!</p> </div>
+    <div class="input-container" style="display: none;">
+        <i class="fas fa-paperclip"></i>
+        <i class="fa fa-paper-plane" onclick="sendMessage()"></i>
+        <input type="text" id="userInput" placeholder="Write your message here">
     </div>
-        <div class="input-container">
-            <i class="fas fa-paperclip"></i> <!-- Ícone de senha -->
-            <i class="fa fa-paper-plane" onclick="sendMessage()"></i>
-            <input type="text" id="userInput" placeholder="Write your message here">
-        </div>
-    
+
     <script src="bots.js"></script>
     <script src="bots_select.js"></script>
-    <script>
-        let section = document.getElementById("bots-list");
-        let resultados = '';
-        for (let dado of dados) {
-            let name = dado.name;
-            let descricao = dado.descricao;
-            let img = dado.img;  // Atribuindo o valor correto da imagem
-    
-            resultados += `
-                <div class="item-resultado" onclick="selectBot('bot1')">
-                    <img src="${img}" alt="${name}" class="bot-image">
-                    <div class="item-text">  <!-- Contêiner para o nome e a descrição -->
-                        <h2>
-                            <a href="#" target="_blank">${name}</a>
-                        </h2>
-                        <p class="descricao-meta">${descricao}</p>
-                    </div>
-                </div>
-            `;
-        }
-        section.innerHTML = resultados;
-    </script>
-    
+
+
 </body>
+
 </html>

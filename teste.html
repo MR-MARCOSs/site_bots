@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat com Bot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-box">
+            <div class="messages">
+                <div class="message bot">Olá! Como posso ajudá-lo?</div>
+            </div>
+            <input type="text" class="message-input" id="user-message" placeholder="Digite sua mensagem...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userMessage = document.getElementById('user-message').value;
+            if (userMessage.trim() !== "") {
+                const messageContainer = document.createElement('div');
+                messageContainer.classList.add('message', 'user');
+                messageContainer.textContent = userMessage;
+                document.querySelector('.messages').appendChild(messageContainer);
+
+                // Resposta do Bot (simulada)
+                setTimeout(() => {
+                    const botResponse = document.createElement('div');
+                    botResponse.classList.add('message', 'bot');
+                    botResponse.textContent = "Eu sou um bot. Você disse: " + userMessage;
+                    document.querySelector('.messages').appendChild(botResponse);
+                }, 1000);
+
+                // Limpar o campo de entrada
+                document.getElementById('user-message').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
