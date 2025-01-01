@@ -182,3 +182,21 @@
   color: white;
   margin: 5px;
 }
+
+@keyframes moveRight {
+  0% {
+    transform: translateX(100%); /* Começa fora da tela à direita */
+  }
+  100% {
+    transform: translateX(0); /* Move para a posição original */
+  }
+}
+
+@keyframes moveLeft {
+  0% {
+    transform: translateX(0); /* Começa na posição original */
+  }
+  100% {
+    transform: translateX(-200%); /* Move completamente para a esquerda */
+  }
+}
