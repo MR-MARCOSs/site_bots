@@ -87,7 +87,7 @@
     max-height: 88vh;
     margin-top: 0.5vh;
     margin-right: 0.5vh;
-    background-color: #F1F1F1;
+    background-color: #da0c0c;
     position: relative; /* Para que o input seja posicionado em relação a este contêiner */
     display: flex;
     flex-direction: column;
@@ -183,6 +183,16 @@
   margin: 5px;
 }
 
+/* Adicionando uma animação para mover a barra lateral e os elementos */
+@keyframes moveLeft {
+  0% {
+    transform: translateX(0); /* Começa na posição original */
+  }
+  100% {
+    transform: translateX(-100%); /* Move a barra lateral completamente para a esquerda */
+  }
+}
+
 @keyframes moveRight {
   0% {
     transform: translateX(100%); /* Começa fora da tela à direita */
@@ -192,11 +202,23 @@
   }
 }
 
-@keyframes moveLeft {
-  0% {
-    transform: translateX(0); /* Começa na posição original */
-  }
-  100% {
-    transform: translateX(-200%); /* Move completamente para a esquerda */
-  }
+/* Classe para mover a barra lateral para a esquerda */
+.move-left {
+  animation: moveLeft 3s forwards; /* Duração de 3s, animação vai até o fim */
+}
+
+/* Classe para mover o chat para o centro da tela */
+.move-center {
+  animation: moveRight 3s forwards;
+  margin-left: 10vw; /* Ajusta a posição para centralizar */
+  margin-right: 10vw;
+
+}
+
+/* Mover a seta para o canto após a animação */
+.arrow-move {
+  animation: moveRight 3s forwards;
+  position: absolute;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
