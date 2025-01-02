@@ -13,8 +13,8 @@
   .chatbots {
     width: 20vw;
     height: 99vh;
-    margin-top: 0.5vh;
-    margin-left: 0.5vh;
+    margin-top: 0.2%;
+    margin-left: 0.2%;
     background-color: rgb(30, 30, 30);
   }
 
@@ -83,11 +83,11 @@
   }
 
   .chat-conversation {
-    width: 80vw;
-    height: 88vh;
-    margin-top: 0.5vh;
-    margin-right: 0.5vh;
-    background-color: #F1F1F1;;
+    width: 80%;
+    height: 88%;
+    margin-top: 0.2%;
+    margin-right: 0.2%;
+    background-color: #a30f0f;;
     position: relative; /* Para que o input seja posicionado em relação a este contêiner */
     z-index: 1;
     display: flex;
@@ -193,6 +193,7 @@
 }
 
 /* Adicionando uma animação para mover a barra lateral e os elementos */
+/* Animações originais */
 @keyframes moveLeft {
   0% {
     transform: translateX(0); /* Começa na posição original */
@@ -204,10 +205,10 @@
 
 @keyframes moveCenter {
   0% {
-    transform: translateX(22.5vw); /* Começa fora da tela à direita */
+    transform: translateX(0); /* Começa fora da tela à direita */
   }
   100% {
-    transform: translateX(10vw); /* Move para a posição original */
+    transform: translateX(-10vw); /* Move para a posição original */
   }
 }
 
@@ -229,38 +230,81 @@
   }
 }
 
-@keyframes moveRight {
+/* Animações de reversa */
+@keyframes moveLeftReverse {
   0% {
-    transform: translateX(0); /* Começa na posição original */
+    transform: translateX(-100%); /* Começa movendo a barra lateral para a esquerda */
   }
   100% {
-    transform: translateX(0.5vw); /* Move a barra lateral completamente para a esquerda */
+    transform: translateX(0); /* Move de volta para a posição original */
   }
 }
 
+@keyframes moveCenterReverse {
+  0% {
+    transform: translateX(-10vw); /* Começa no centro */
+  }
+  100% {
+    transform: translateX(0vw); /* Volta para a posição original */
+  }
+}
+
+@keyframes moveArrowReverse {
+  0% {
+    transform: translateX(1vw); /* Começa na posição de retorno */
+  }
+  100% {
+    transform: translateX(21vw); /* Volta para a posição original */
+  }
+}
+
+@keyframes moveInputCenterReverse {
+  0% {
+    transform: translateX(-10vw); /* Começa na posição de retorno */
+  }
+  100% {
+    transform: translateX(0vw); /* Volta para a posição original */
+  }
+}
+
+/* Animações aplicadas */
 .move-input-center {
-  animation: moveInputCenter 1s forwards; /* Duração de 1s para a animação */
-  
+  animation: moveInputCenter 1s forwards;
   z-index: 3;
 }
 
-/* Classe para mover a barra lateral para a esquerda */
+/* Mover a barra lateral para a esquerda */
 .move-left {
-  animation: moveLeft 1s forwards; /* Duração de 1s, animação vai até o fim */
+  animation: moveLeft 1s forwards;
 }
 
-/* Classe para mover o chat para o centro da tela */
+/* Mover o chat para o centro */
 .move-center {
   animation: moveCenter 1s forwards;
-  position: absolute;
+  
 }
 
-/* Mover a seta para o canto após a animação */
+/* Mover a seta */
 .arrow-move {
   animation: moveArrow 1s forwards;
   left: 1vw;
 }
 
-.chatbots-return {
-  animation: moveRight 1s forwards;
+/* Animações reversas */
+.move-input-center-reverse {
+  animation: moveInputCenterReverse 1s forwards;
+}
+
+.move-left-reverse {
+  animation: moveLeftReverse 1s forwards;
+}
+
+.move-center-reverse {
+  animation: moveCenterReverse 1s forwards;
+  
+}
+
+.arrow-move-reverse {
+  animation: moveArrowReverse 1s forwards;
+  left: 1vw;
 }
