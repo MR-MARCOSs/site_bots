@@ -256,36 +256,36 @@ body {
 }
 
 .move-input-center {
-  animation: moveInputCenter 1s forwards;
+  animation: moveInputCenter 0.5s forwards;
   z-index: 1;
 }
 
 .move-left {
-  animation: moveLeft 1s forwards;
+  animation: moveLeft 0.5s forwards;
 }
 
 .move-center {
-  animation: moveCenter 1s forwards;
+  animation: moveCenter 0.5s forwards;
 }
 
 .arrow-move {
-  animation: moveArrow 1s forwards;
+  animation: moveArrow 0.5s forwards;
   left: 1vw;
 }
 
 .move-input-center-reverse {
-  animation: moveInputCenterReverse 1s forwards;
+  animation: moveInputCenterReverse 0.5s forwards;
 }
 
 .move-left-reverse {
-  animation: moveLeftReverse 1s forwards;
+  animation: moveLeftReverse 0.5s forwards;
 }
 
 .move-center-reverse {
-  animation: moveCenterReverse 1s forwards;
+  animation: moveCenterReverse 0.5s forwards;
 }
 
 .arrow-move-reverse {
-  animation: moveArrowReverse 1s forwards;
+  animation: moveArrowReverse 0.5s forwards;
   left: 1vw;
 }
