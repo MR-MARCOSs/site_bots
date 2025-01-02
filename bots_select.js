@@ -2,7 +2,6 @@ let section = document.getElementById("bots-list");
 let resultados = '';
 let chatConversation = document.querySelector('.chat-conversation');
 let inputContainer = document.querySelector('.input-container');
-// Variável para rastrear o item selecionado atualmente
 let selectedItem = null;
 
 for (let dado of dados) {
@@ -20,53 +19,45 @@ for (let dado of dados) {
 }
 section.innerHTML = resultados;
 
-
-
 function selectBot(botName) {
     const bot = dados.find(d => d.name === botName);
 
     if (bot) {
-        chatConversation.innerHTML = ''; // Limpa a mensagem inicial
+        chatConversation.innerHTML = '';
         const chatContainer = document.querySelector('.chat-conversation');
         const mensagemInicial = document.createElement('div');
         mensagemInicial.className = `chat-message bot-message msg-inicial`;
         mensagemInicial.textContent = bot.descricao;
         chatContainer.appendChild(mensagemInicial);
 
-        inputContainer.style.display = 'flex'; // Mostra o input
+        inputContainer.style.display = 'flex';
+        const inputField = document.getElementById('userInput');
+        inputField.disabled = false;
 
-
-        // Remove a cor roxa do item anteriormente selecionado
         if (selectedItem) {
             selectedItem.style.backgroundColor = '';
         }
 
-        // Encontra o novo item selecionado e adiciona a cor roxa
         const newItem = document.querySelector(`.item-resultado[onclick="selectBot('${botName}')"]`);
-        newItem.style.backgroundColor = 'purple'; // Define a cor de fundo como roxa
+        newItem.style.backgroundColor = 'purple';
 
-        // Atualiza o item selecionado atualmente
         selectedItem = newItem;
-
-
     }
 }
 
 function appendMessage(sender, message) {
-const chatContainer = document.querySelector('.chat-conversation');
-const messageDiv = document.createElement('div');
-messageDiv.className = `chat-message ${sender}-message`;
-messageDiv.textContent = message;
-chatContainer.appendChild(messageDiv);
+    const chatContainer = document.querySelector('.chat-conversation');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${sender}-message`;
+    messageDiv.textContent = message;
+    chatContainer.appendChild(messageDiv);
 
-// Rola o chat para a mensagem mais recente
-chatContainer.scrollTop = chatContainer.scrollHeight;
+    chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
-// Event listeners
 document.getElementById('sendMessage').addEventListener('click', sendMessage);
 document.getElementById('userInput').addEventListener('keypress', (event) => {
-if (event.key === 'Enter') sendMessage();
+    if (event.key === 'Enter') sendMessage();
 });
 
 function sendMessage() {
@@ -76,9 +67,8 @@ function sendMessage() {
     if (userMessage === '') return;
 
     appendMessage('user', userMessage);
-    inputField.value = ''; // Limpa o campo de entrada
+    inputField.value = '';
 
-    // Simular a resposta do bot (aqui você pode integrar a IA)
     setTimeout(() => {
         const botResponse = `Você disse: "${userMessage}". Como posso ajudar mais?`;
         appendMessage('bot', botResponse);

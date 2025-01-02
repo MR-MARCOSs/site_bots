@@ -1,145 +1,139 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #F1F1F1;
-    display: flex; /* Importante: torna o body um flex container */
-  }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F1F1F1;
+  display: flex;
+}
 
-  .chatbots {
-    width: 20vw;
-    height: 99vh;
-    margin-top: 0.2%;
-    margin-left: 0.2%;
-    background-color: rgb(30, 30, 30);
-  }
+.chatbots {
+  width: 20vw;
+  height: 99vh;
+  margin-top: 0.2%;
+  margin-left: 0.2%;
+  background-color: rgb(30, 30, 30);
+}
 
-  .user-profile-img {
-    object-fit: contain;
-    width: 100px;
-    height: 100px;
-    display: block;
-    margin: 10% auto;
-    margin-bottom: 5%;
-    border-radius: 50%;
-  }
+.user-profile-img {
+  object-fit: contain;
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 10% auto;
+  margin-bottom: 5%;
+  border-radius: 50%;
+}
 
-  .item-resultado {
-    display: flex;             /* Usa flexbox para alinhar itens horizontalmente */
-    align-items: center;       /* Alinha os itens verticalmente ao centro */
-    margin-bottom: 15px;       /* Espaçamento entre os itens */
-    gap: 5px;                 /* Espaçamento entre a imagem e o texto */
+.item-resultado {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 5px;
 }
 
 .item-text {
   display: flex;
-  flex-direction: column;   /* Organiza o nome e a descrição em coluna */
-  justify-content: center;  /* Alinha o conteúdo de forma centralizada verticalmente */
+  flex-direction: column;
+  justify-content: center;
 }
 
 .item-resultado h2 {
   color: #F1F1F1;
-  margin: 0;                /* Remove a margem */
-  font-size: 1.2em;         /* Ajuste no tamanho da fonte */
-  font-weight: bold;        /* Deixa o nome mais destacado */
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
-/* Estilo para a descrição do bot */
 .descricao-meta {
-  color: #ffffff;              /* Cor mais suave para a descrição */
-  font-size: 0.9em;         /* Tamanho da fonte da descrição */
+  color: #ffffff;
+  font-size: 0.9em;
 }
 
-.item-text {
+.bot-image {
+  object-fit: contain;
+  width: 70px;
+  height: 70px;
+  display: block;
+  margin: 2.5% 0;
+  margin-left: 5%;
+  border-radius: 50%;
+}
+
+.usermail {
+  color: #F1F1F1;
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+.bot-disponiveis {
+  color: #F1F1F1;
+  margin-left: 5%;
+  margin-bottom: 2.5%;
+}
+
+.chat-conversation {
+  width: 80%;
+  max-height: 88vh;
+  margin-top: 0.2%;
+  margin-right: 0.2%;
+  background-color: #F1F1F1;
+  position: relative;
+  z-index: 1;
   display: flex;
-  flex-direction: column;   /* Organiza o nome e a descrição em coluna */
-  justify-content: center;  /* Alinha o conteúdo de forma centralizada verticalmente */
-}
-
-  .bot-image {
-    object-fit: contain;
-    width: 70px;
-    height: 70px;
-    display: block;
-    margin: 2.5% 0;
-    margin-left: 5%;
-    border-radius: 50% 50% 50% 50%;
-  }
-
-  .usermail {
-    color: #F1F1F1;
-    text-align: center;
-    margin-bottom: 5%;
-  }
-
-  .bot-disponiveis {
-    color: #F1F1F1;
-    margin-left: 5%;
-    margin-bottom: 2.5%;
-  }
-
-  .chat-conversation {
-    width: 80%;
-    height: 88%;
-    margin-top: 0.2%;
-    margin-right: 0.2%;
-    background-color: #a30f0f;;
-    position: relative; /* Para que o input seja posicionado em relação a este contêiner */
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Espaço entre as mensagens */
-    overflow-y: auto;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
 }
 
 .input-container {
-    position: absolute; /* Fixa o input na parte inferior */
-    bottom: 0; /* Coloca o input na parte inferior do contêiner */
-    left: 2.5%;
-    width: 75%; /* O input ocupa toda a largura disponível */
-    padding: 10px; /* Espaço ao redor do input */
-    background-color: #D9D9D9; /* Cor do fundo do input */
-    border-radius: 10px;
-    margin-bottom: 1%;
-    margin-left: 20vw;
+  position: absolute;
+  bottom: 0;
+  left: 2.5%;
+  width: 75%;
+  padding: 10px;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  margin-bottom: 1%;
+  margin-left: 20vw;
+  z-index: 1;
 }
 
 .input-container i {
-    position: absolute;
-    top: 50%;
-    left: 2%;
-    transform: translateY(-50%);
-    color: #3f3f3f;
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translateY(-50%);
+  color: #3f3f3f;
 }
 
 .input-container .fa-paperclip {
-  left: 2%; /* Ícone de clipe */
+  left: 2%;
 }
 
 .input-container .fa-paper-plane {
-  left: 4%; /* Ícone de avião, com mais espaçamento à direita */
+  left: 4%;
 }
 
 .input-container input {
-    width: 100%;
-    padding: 10px 10px 10px 6%; /* Adiciona espaço para o ícone */
-    border: none;
-    border-radius: 5px;
-    background-color: #D9D9D9;
+  width: 100%;
+  padding: 10px 10px 10px 6%;
+  border: none;
+  border-radius: 5px;
+  background-color: #D9D9D9;
 }
 
 .input-container input:focus {
-    outline: none;
+  outline: none;
 }
 
 .chat-message {
   padding: 10px;
   margin-top: 1.5%;
-  max-width: 70%; /* Limita a largura máxima das mensagens */
+  max-width: 70%;
   word-wrap: break-word;
 }
 
@@ -148,39 +142,36 @@
   margin-right: 2.5%;
   text-align: right;
   color: blue;
-  align-self: flex-end; /* Alinha a mensagem do usuário à direita */
+  align-self: flex-end;
   background-color: #e0e0ff;
 }
 
-/* Estilo das mensagens do bot (alinhadas à esquerda) */
 .bot-message {
   border-radius: 0px 7px 7px 7px;
   margin-left: 2.5%;
   text-align: left;
   color: green;
-  align-self: flex-start; /* Alinha a mensagem do bot à esquerda */
+  align-self: flex-start;
   background-color: #d3ffd3;
 }
 
 .chat-conversation p {
-  font-size: 2vw;              
-  text-align: center;          
-  margin: 25% 25% 25% 25%;                   
+  font-size: 2vw;
+  text-align: center;
+  margin: 25% 25% 25% 25%;
   font-weight: bold;
-                          
 }
 
 .arrow {
   position: absolute;
   z-index: 2;
   left: 22vw;
-  width: 30px;               
-  height: 30px;              
-  background-color: rgb(30, 30, 30);   
-  border-radius: 10px;                     
-  font-size: 20px;           
-
-  margin-top: 0.5vh;                         
+  width: 30px;
+  height: 30px;
+  background-color: rgb(30, 30, 30);
+  border-radius: 10px;
+  font-size: 20px;
+  margin-top: 0.5vh;
 }
 
 .fa-arrow-left, .fa-arrow-right {
@@ -192,105 +183,96 @@
   margin-top: 5%;
 }
 
-/* Adicionando uma animação para mover a barra lateral e os elementos */
-/* Animações originais */
 @keyframes moveLeft {
   0% {
-    transform: translateX(0); /* Começa na posição original */
+      transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%); /* Move a barra lateral completamente para a esquerda */
+      transform: translateX(-100%);
   }
 }
 
 @keyframes moveCenter {
   0% {
-    transform: translateX(0); /* Começa fora da tela à direita */
+      transform: translateX(0);
   }
   100% {
-    transform: translateX(-10vw); /* Move para a posição original */
+      transform: translateX(-10vw);
   }
 }
 
 @keyframes moveArrow {
   0% {
-    transform: translateX(21vw); /* Começa fora da tela à direita */
+      transform: translateX(21vw);
   }
   100% {
-    transform: translateX(1vw); /* Move para a posição original */
+      transform: translateX(1vw);
   }
 }
 
 @keyframes moveInputCenter {
   0% {
-    transform: translateX(0vw); /* Começa fora da tela à direita */
+      transform: translateX(0vw);
   }
   100% {
-    transform: translateX(-10vw); /* Move para a posição original */
+      transform: translateX(-10vw);
   }
 }
 
-/* Animações de reversa */
 @keyframes moveLeftReverse {
   0% {
-    transform: translateX(-100%); /* Começa movendo a barra lateral para a esquerda */
+      transform: translateX(-100%);
   }
   100% {
-    transform: translateX(0); /* Move de volta para a posição original */
+      transform: translateX(0);
   }
 }
 
 @keyframes moveCenterReverse {
   0% {
-    transform: translateX(-10vw); /* Começa no centro */
+      transform: translateX(-10vw);
   }
   100% {
-    transform: translateX(0vw); /* Volta para a posição original */
+      transform: translateX(0vw);
   }
 }
 
 @keyframes moveArrowReverse {
   0% {
-    transform: translateX(1vw); /* Começa na posição de retorno */
+      transform: translateX(1vw);
   }
   100% {
-    transform: translateX(21vw); /* Volta para a posição original */
+      transform: translateX(21vw);
   }
 }
 
 @keyframes moveInputCenterReverse {
   0% {
-    transform: translateX(-10vw); /* Começa na posição de retorno */
+      transform: translateX(-10vw);
   }
   100% {
-    transform: translateX(0vw); /* Volta para a posição original */
+      transform: translateX(0vw);
   }
 }
 
-/* Animações aplicadas */
 .move-input-center {
   animation: moveInputCenter 1s forwards;
-  z-index: 3;
+  z-index: 1;
 }
 
-/* Mover a barra lateral para a esquerda */
 .move-left {
   animation: moveLeft 1s forwards;
 }
 
-/* Mover o chat para o centro */
 .move-center {
   animation: moveCenter 1s forwards;
-  
 }
 
-/* Mover a seta */
 .arrow-move {
   animation: moveArrow 1s forwards;
   left: 1vw;
 }
 
-/* Animações reversas */
 .move-input-center-reverse {
   animation: moveInputCenterReverse 1s forwards;
 }
@@ -301,7 +283,6 @@
 
 .move-center-reverse {
   animation: moveCenterReverse 1s forwards;
-  
 }
 
 .arrow-move-reverse {

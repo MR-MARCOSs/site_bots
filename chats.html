@@ -7,7 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/chats.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 </head>
 
 <body>
@@ -15,27 +14,22 @@
         <img src="./assets/user_example.jpg" alt="" class="user-profile-img">
         <p class="usermail">usermail@example.com</p>
         <h2 class="bot-disponiveis">Bots Disponíveis:</h2>
-        <section id="bots-list">
-        </section>
+        <section id="bots-list"></section>
     </div>
     <div class="arrow" onclick="animation()">
         <i class="fas fa-arrow-left"></i>
     </div>
     <div class="chat-conversation">
-
-    
         <p>Selecione um bot e inicie a conversa!</p>
     </div>
-    <div class="input-container" style="display: none;">
-        <i class="fas fa-paperclip" ></i>
+    <div class="input-container">
+        <i class="fas fa-paperclip"></i>
         <i class="fa fa-paper-plane" onclick="sendMessage()"></i>
-        <input type="text" id="userInput" placeholder="Write your message here">
+        <input type="text" id="userInput" placeholder="Write your message here" disabled>
     </div>
-    <script src="animations.js"></script>        
+    <script src="animations.js"></script>
     <script src="bots.js"></script>
     <script src="bots_select.js"></script>
-
-
 </body>
 
 </html>
