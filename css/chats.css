@@ -84,11 +84,12 @@
 
   .chat-conversation {
     width: 80vw;
-    max-height: 88vh;
+    height: 88vh;
     margin-top: 0.5vh;
     margin-right: 0.5vh;
     background-color: #da0c0c;
     position: relative; /* Para que o input seja posicionado em relação a este contêiner */
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 10px; /* Espaço entre as mensagens */
@@ -170,17 +171,25 @@
 }
 
 .arrow {
+  position: absolute;
+  z-index: 2;
+  left: 22vw;
   width: 30px;               
   height: 30px;              
   background-color: rgb(30, 30, 30);   
   border-radius: 10px;                     
   font-size: 20px;           
-  margin-left: 1%;                         
+
+  margin-top: 0.5vh;                         
 }
 
 .fa-arrow-left {
   color: white;
   margin: 5px;
+}
+
+.msg-inicial {
+  margin-top: 5%;
 }
 
 /* Adicionando uma animação para mover a barra lateral e os elementos */
@@ -195,11 +204,35 @@
 
 @keyframes moveRight {
   0% {
-    transform: translateX(100%); /* Começa fora da tela à direita */
+    transform: translateX(22.5vw); /* Começa fora da tela à direita */
   }
   100% {
-    transform: translateX(0); /* Move para a posição original */
+    transform: translateX(10vw); /* Move para a posição original */
   }
+}
+
+@keyframes moveArrow {
+  0% {
+    transform: translateX(21vw); /* Começa fora da tela à direita */
+  }
+  100% {
+    transform: translateX(1vw); /* Move para a posição original */
+  }
+}
+
+@keyframes moveInputCenter {
+  0% {
+    transform: translateX(0vw); /* Começa fora da tela à direita */
+  }
+  100% {
+    transform: translateX(-10vw); /* Move para a posição original */
+  }
+}
+
+.move-input-center {
+  animation: moveInputCenter 3s forwards; /* Duração de 3s para a animação */
+  position: absolute;
+  z-index: 3;
 }
 
 /* Classe para mover a barra lateral para a esquerda */
@@ -210,15 +243,12 @@
 /* Classe para mover o chat para o centro da tela */
 .move-center {
   animation: moveRight 3s forwards;
-  margin-left: 10vw; /* Ajusta a posição para centralizar */
-  margin-right: 10vw;
-
+  position: absolute;
 }
 
 /* Mover a seta para o canto após a animação */
 .arrow-move {
-  animation: moveRight 3s forwards;
-  position: absolute;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  animation: moveArrow 3s forwards;
+  left: 1vw;
 }
+

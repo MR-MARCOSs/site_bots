@@ -18,10 +18,11 @@
         <section id="bots-list">
         </section>
     </div>
-    <div class="chat-conversation">
     <div class="arrow" onclick="animation()">
         <i class="fas fa-arrow-left" ></i>
     </div>
+    <div class="chat-conversation">
+
     
         <p>Selecione um bot e inicie a conversa!</p>
     </div>
@@ -36,6 +37,7 @@ function animation() {
     const chatbots = document.querySelector('.chatbots');
     const chatConversation = document.querySelector('.chat-conversation');
     const arrow = document.querySelector('.arrow');
+    const inputContainer = document.querySelector('.input-container');
 
     // Adiciona a classe para mover a barra lateral para a esquerda
     chatbots.classList.add('move-left');
@@ -45,9 +47,9 @@ function animation() {
     
     // Adiciona a classe para mover a seta para o canto superior direito
     arrow.classList.add('arrow-move');
-    
-    // Remove os eventos ou outros elementos se necessário (como ocultar a seta)
-    arrow.style.display = 'none';
+
+    // Adiciona a animação para mover o input-container para o centro
+    inputContainer.classList.add('move-input-center');
 }
 
     </script>
