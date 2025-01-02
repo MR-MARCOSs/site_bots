@@ -19,7 +19,7 @@
         </section>
     </div>
     <div class="arrow" onclick="animation()">
-        <i class="fas fa-arrow-left" ></i>
+        <i class="fas fa-arrow-left"></i>
     </div>
     <div class="chat-conversation">
 
@@ -32,36 +32,39 @@
         <input type="text" id="userInput" placeholder="Write your message here">
     </div>
     <script>
-function animation() {
-    // Selecione os elementos que precisam de animação
-    const chatbots = document.querySelector('.chatbots');
-    const chatConversation = document.querySelector('.chat-conversation');
-    const arrow = document.querySelector('.arrow');
-    const inputContainer = document.querySelector('.input-container');
-
-    // Adiciona a classe para mover a barra lateral para a esquerda
-    chatbots.classList.add('move-left');
-    
-    // Adiciona a classe para mover o chat para o centro
-    chatConversation.classList.add('move-center');
-
-    
-    // Adiciona a classe para mover a seta para o canto superior direito
-    arrow.classList.add('arrow-move');
-
-    // Adiciona a animação para mover o input-container para o centro
-    inputContainer.classList.add('move-input-center');
-
-    // Adiciona o evento para mudar o ícone de seta após a animação
-    arrow.addEventListener('animationstart', function() {
-        // Remove a classe de seta à esquerda
-        arrow.querySelector('i').classList.remove('fa-arrow-left');
+        function animation() {
+            const arrowIcon = document.querySelector('.arrow i');  // O elemento da seta
+            const chatbots = document.querySelector('.chatbots');
+            const chatConversation = document.querySelector('.chat-conversation');
+            const inputContainer = document.querySelector('.input-container');
+            
+            // Verificar se a seta está para a esquerda (fa-arrow-left) ou para a direita (fa-arrow-right)
+            if (arrowIcon.classList.contains('fa-arrow-left')) {
+                // Animação de mover os elementos para a esquerda
+                chatbots.classList.add('move-left');
+                chatConversation.classList.add('move-center');
+                arrowIcon.classList.add('arrow-move'); // Isso aplica a animação na seta
+                inputContainer.classList.add('move-input-center');
         
-        // Adiciona a classe de seta à direita
-        arrow.querySelector('i').classList.add('fa-arrow-right');
-    });
-}
-    </script>
+                // Mudar o ícone da seta para a direita
+                arrowIcon.classList.remove('fa-arrow-left');
+                arrowIcon.classList.add('fa-arrow-right');
+            } else {
+                console.log("teste");
+                chatbots.classList.remove('move-left');
+                chatConversation.classList.remove('move-center');
+                inputContainer.classList.remove('move-input-center');
+                arrowIcon.classList.remove('arrow-move')
+        
+                // Mudar o ícone da seta para a esquerda
+                arrowIcon.classList.remove('fa-arrow-right');
+                arrowIcon.classList.add('fa-arrow-left');
+            }
+        }
+        </script>
+        
+        
+        
     <script src="bots.js"></script>
     <script src="bots_select.js"></script>
 

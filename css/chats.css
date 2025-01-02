@@ -202,7 +202,7 @@
   }
 }
 
-@keyframes moveRight {
+@keyframes moveCenter {
   0% {
     transform: translateX(22.5vw); /* Começa fora da tela à direita */
   }
@@ -229,26 +229,38 @@
   }
 }
 
+@keyframes moveRight {
+  0% {
+    transform: translateX(0); /* Começa na posição original */
+  }
+  100% {
+    transform: translateX(0.5vw); /* Move a barra lateral completamente para a esquerda */
+  }
+}
+
 .move-input-center {
-  animation: moveInputCenter 3s forwards; /* Duração de 3s para a animação */
+  animation: moveInputCenter 1s forwards; /* Duração de 1s para a animação */
   
   z-index: 3;
 }
 
 /* Classe para mover a barra lateral para a esquerda */
 .move-left {
-  animation: moveLeft 3s forwards; /* Duração de 3s, animação vai até o fim */
+  animation: moveLeft 1s forwards; /* Duração de 1s, animação vai até o fim */
 }
 
 /* Classe para mover o chat para o centro da tela */
 .move-center {
-  animation: moveRight 3s forwards;
+  animation: moveCenter 1s forwards;
   position: absolute;
 }
 
 /* Mover a seta para o canto após a animação */
 .arrow-move {
-  animation: moveArrow 3s forwards;
+  animation: moveArrow 1s forwards;
   left: 1vw;
 }
 
+.chatbots-return {
+  animation: moveRight 1s forwards;
+}
