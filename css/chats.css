@@ -87,7 +87,7 @@
     height: 88vh;
     margin-top: 0.5vh;
     margin-right: 0.5vh;
-    background-color: #da0c0c;
+    background-color: #F1F1F1;;
     position: relative; /* Para que o input seja posicionado em relação a este contêiner */
     z-index: 1;
     display: flex;
@@ -183,7 +183,7 @@
   margin-top: 0.5vh;                         
 }
 
-.fa-arrow-left {
+.fa-arrow-left, .fa-arrow-right {
   color: white;
   margin: 5px;
 }
@@ -231,7 +231,7 @@
 
 .move-input-center {
   animation: moveInputCenter 3s forwards; /* Duração de 3s para a animação */
-  position: absolute;
+  
   z-index: 3;
 }
 

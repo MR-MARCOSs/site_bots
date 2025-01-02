@@ -44,14 +44,23 @@ function animation() {
     
     // Adiciona a classe para mover o chat para o centro
     chatConversation.classList.add('move-center');
+
     
     // Adiciona a classe para mover a seta para o canto superior direito
     arrow.classList.add('arrow-move');
 
     // Adiciona a animação para mover o input-container para o centro
     inputContainer.classList.add('move-input-center');
-}
 
+    // Adiciona o evento para mudar o ícone de seta após a animação
+    arrow.addEventListener('animationstart', function() {
+        // Remove a classe de seta à esquerda
+        arrow.querySelector('i').classList.remove('fa-arrow-left');
+        
+        // Adiciona a classe de seta à direita
+        arrow.querySelector('i').classList.add('fa-arrow-right');
+    });
+}
     </script>
     <script src="bots.js"></script>
     <script src="bots_select.js"></script>
