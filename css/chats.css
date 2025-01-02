@@ -297,52 +297,109 @@ body {
     overflow: hidden;
     opacity: 0;
     transition: all 0.5s ease; /* Para uma transição suave */
-}
+  }
 
-/* Quando o chatbots estiver visível */
-.chatbots.show {
-  position: absolute;
+  /* Quando o chatbots estiver visível */
+  .chatbots.show {
+    position: absolute;
     width: 100vw;
     height: 100vh;
     opacity: 1;
     z-index: 2;
-}
+  }
 
-/* Estilos para centralizar o input no meio da tela */
-.input-container {
+  /* Estilos para centralizar o input no meio da tela */
+  .input-container {
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
+    left: 0;
+    right: 0;
+    margin: 0 auto; /* Centraliza o contêiner */
+    width: 90%; /* 90% da largura da tela */
     padding: 10px;
     background-color: #D9D9D9;
     border-radius: 10px;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
     z-index: 1;
-}
+  }
 
-.input-container input {
+  .input-container input {
     width: 100%;
-    padding: 10px 10px 10px 8%;
+    padding: 7px 7px 7px 8%;
     font-size: 0.9em;
-}
+  }
 
-/* Estilo da seta */
-.arrow {
+  /* Adicionando o chat-conversation */
+  .chat-conversation {
+    width: 100%; /* 100% da largura da tela */
+    max-height: 80vh; /* Define uma altura máxima para a conversa */
+    margin-top: 10%; /* Deixa um espaço acima */
+    margin-bottom: 5%; /* Ajuste para um pequeno espaçamento na parte inferior */
+    background-color: #F1F1F1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    padding: 10px;
+    z-index: 1;
+  }
+
+  .chat-conversation p {
+    font-size: 3vw; /* Aumentando o tamanho da fonte */
+    text-align: center; /* Centralizando o texto horizontalmente */
+    margin: 25% 0; /* Centralizando verticalmente com um espaço maior */
+    font-weight: bold;
+    color: #333; /* Cor do texto para maior contraste */
+  }
+
+  /* Estilo da seta */
+  .arrow {
     position: absolute;
     z-index: 2;
-    left: 5%;
+    top: 10px; /* Move a seta para o topo */
+    left: 10px; /* Move a seta para o canto esquerdo */
     width: 30px;
     height: 30px;
     background-color: rgb(30, 30, 30);
     border-radius: 10px;
     font-size: 20px;
-    margin-top: 0.5vh;
     cursor: pointer;
-}
+  }
 
-.arrow i {
+  .arrow i {
     color: white;
     margin: 5px;
-}}
+  }
+
+  /* Aumentando o espaço entre os ícones na input-container */
+  .input-container i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #3f3f3f;
+  }
+
+/* Ajustando a largura do input para que os ícones não se sobreponham */
+.input-container input {
+  width: calc(100% - 40px); /* Reduzindo o width para compensar o espaço dos ícones */
+  padding: 10px 10px 10px 6%; 
+  border: none;
+  border-radius: 5px;
+  background-color: #D9D9D9;
+  margin-left: 5%;
+}
+
+/* Aumentando o espaço entre os ícones */
+.input-container .fa-paperclip {
+   /* Posição inicial do ícone */
+  margin-right: 15px; /* Aumenta o espaço entre os ícones */
+}
+
+.input-container .fa-paper-plane {
+   /* Posiciona o ícone um pouco mais à direita */
+  margin-left: 15px; /* Aumenta o espaço entre os ícones */
+}
+
+  
+}

@@ -19,12 +19,9 @@ function toggleChatbots() {
         }
 
         // Adiciona as classes de movimento
-        chatbots.classList.add('move-left');
-        chatConversation.classList.add('move-center');
-        inputContainer.classList.add('move-input-center');
-        arrow.classList.add('arrow-move');
+
         arrowIcon.classList.remove('fa-arrow-left');
-        arrowIcon.classList.add('fa-arrow-right');
+
     } else {
         // Se não estiver visível, remove as classes de movimento
         chatbots.classList.remove('move-left');
@@ -32,13 +29,8 @@ function toggleChatbots() {
         inputContainer.classList.remove('move-input-center');
         arrow.classList.remove('arrow-move');
         arrowIcon.classList.remove('fa-arrow-right');
-        arrowIcon.classList.add('fa-arrow-left');
 
-        // Adiciona as classes de movimento reverso
-        chatbots.classList.add('move-left-reverse');
-        chatConversation.classList.add('move-center-reverse');
-        inputContainer.classList.add('move-input-center-reverse');
-        arrow.classList.add('arrow-move-reverse');
+
     }
 }
 
