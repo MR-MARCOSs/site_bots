@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 import { User } from "./User"; // Assumindo que a entidade User já foi definida
 import { Bot } from "./Bot"; // Assumindo que a entidade Bot já foi definida
+import { Message } from "./Message";
 
 @Entity('chats')
 export class Chat {
@@ -23,4 +24,7 @@ export class Chat {
 
     @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
     updatedAt: Date;
+
+    @OneToMany(() => Message, message => message.chat)
+    messages: Message[];
 }
