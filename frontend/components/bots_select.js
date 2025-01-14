@@ -8,19 +8,38 @@ document.addEventListener('DOMContentLoaded', () => {
     let inputField = document.getElementById('userInput');  // Seleciona o campo de entrada
 
     // Função para enviar a mensagem
-    function sendMessage() {
-        const userMessage = inputField.value.trim();
+// Função para enviar a mensagem
+// Função para enviar a mensagem
+function sendMessage() {
+    const userMessage = inputField.value.trim();
 
-        if (userMessage === '') return;  // Se a mensagem estiver vazia, não faz nada
+    if (userMessage === '') return;  // Se a mensagem estiver vazia, não faz nada
 
-        appendMessage('user', userMessage);  // Adiciona a mensagem do usuário ao chat
-        inputField.value = '';  // Limpa o campo de input
+    appendMessage('user', userMessage);  // Adiciona a mensagem do usuário ao chat
+    inputField.value = '';  // Limpa o campo de input
 
-        setTimeout(() => {
-            const botResponse = `Você disse: "${userMessage}". Como posso ajudar mais?`;  // Simula uma resposta do bot
-            appendMessage('bot', botResponse);  // Adiciona a resposta do bot ao chat
-        }, 500);
-    }
+    // Chama a rota para obter a resposta do bot
+    fetch('http://localhost:3000/get-response', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            chatId: 1,  // Exemplo de chatId
+            userMessage: userMessage
+        })
+    })
+    .then(response => response.json())  // Processa a resposta da API
+    .then(data => {
+        const botResponse = data.response;  // A resposta do bot
+        appendMessage('bot', botResponse);  // Adiciona a resposta do bot ao chat
+    })
+    .catch(error => {
+        console.error('Erro ao obter resposta do bot:', error);
+        appendMessage('bot', 'Desculpe, houve um erro ao processar sua solicitação.');  // Mensagem de erro
+    });
+}
+
 
     // Função para adicionar uma mensagem ao chat
     function appendMessage(sender, message) {
