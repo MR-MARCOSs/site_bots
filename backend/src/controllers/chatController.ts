@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
 import { fetchBotResponse } from '../services/botService';
-import { getBotResRepository } from '../repositories/getBotResRepository';
 import { messageRepository } from '../repositories/messageRepository';
-
 
 export class ChatController {
     async getBotResponse(req: Request, res: Response): Promise<void> {
@@ -20,20 +18,20 @@ export class ChatController {
         console.log('Bot response:', botResponse);
 
         // 3. Salva a resposta do bot
-        const userMessageEntity = getBotResRepository.create({
+        const userMessageEntity = messageRepository.create({
             chat: { id: chatId }, // Relaciona ao chat existente
             sender: 'user',
             content: userMessage,
         });
-        await getBotResRepository.save(userMessageEntity);
+        await messageRepository.save(userMessageEntity);
         console.log('Saved user message:', userMessageEntity);
 
-        const botMessageEntity = getBotResRepository.create({
+        const botMessageEntity = messageRepository.create({
             chat: { id: chatId }, // Relaciona ao mesmo chat
             sender: 'bot',
             content: botResponse,
         });
-        await getBotResRepository.save(botMessageEntity);
+        await messageRepository.save(botMessageEntity);
 
         console.log('Saved bot message:', botMessageEntity);
 
