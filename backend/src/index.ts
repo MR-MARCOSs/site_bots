@@ -1,25 +1,26 @@
-import 'express-async-errors'
-import express from 'express'
-import { AppDataSource } from './data-source'
-import routes from './routes'
+import 'express-async-errors';
+import express from 'express';
+import { AppDataSource } from './data-source';
+import routes from './routes';
 import { errorMiddleware } from './middlewares/error';
-const cors = require('cors');
-  // Importando o pacote cors
+import cors from 'cors';
 
 AppDataSource.initialize().then(() => {
-    const app = express()
+    const app = express();
 
-    // Habilitar o CORS para todas as origen
-    app.use(cors())
+    // Habilitar o CORS para todas as origens
+    app.use(cors());
 
-    app.use(express.json())
+    app.use(express.json());
 
-    app.use(routes)
+    app.use(routes);
 
-    app.use(errorMiddleware)
+    // Middleware de erro deve ser registrado após todas as rotas
+    app.use(errorMiddleware);
+
     // Definir a porta
-    const port = process.env.PORT || 3000
+    const port = process.env.PORT || 3000;
     return app.listen(port, () => {
-        console.log(`Server running at http://localhost:${port}`)
-    })
-})
+        console.log(`Server running at http://localhost:${port}`);
+    });
+});
