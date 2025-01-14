@@ -6,14 +6,11 @@ import { BadRequestError } from '../helpers/api-errors';
 export class ChatController {
     async getBotResponse(req: Request, res: Response): Promise<void> {
         const { userMessage, chatId } = req.body;
-
         if (!chatId || !userMessage) {
             throw new BadRequestError('chatId and userMessage are required.')
         }
-
         // 2. Obtém a resposta do bot
         const botResponse = await fetchBotResponse(userMessage);
-
         console.log('Bot response:', botResponse);
 
         // 3. Salva a resposta do bot
