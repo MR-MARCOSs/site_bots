@@ -3,72 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register Page</title>
     <link rel="stylesheet" href="../css/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body>
     <div class="register">
-        <form class="form-container">
+        <form class="form-container" id="register-form">
             <h2>Register</h2>
+
+            <!-- Mensagem de erro -->
+            
+
+            <!-- Name Input -->
             <div class="input-container">
-              <i class="fas fa-envelope"></i> <!-- Ícone de email -->
-              <input type="email" id="email" placeholder="Email" required>
+                <i class="fas fa-user"></i> <!-- Ícone de nome -->
+                <input type="text" id="name" placeholder="Name" required>
             </div>
             
-              <!-- Password Input -->
+            <!-- Email Input -->
             <div class="input-container">
-              <i class="fas fa-lock"></i> <!-- Ícone de senha -->
-              <input type="password" id="password" placeholder="Password" required>
+                <i class="fas fa-envelope"></i> <!-- Ícone de email -->
+                <input type="email" id="email" placeholder="Email" required>
             </div>
-
+            
+            <!-- Password Input -->
             <div class="input-container">
                 <i class="fas fa-lock"></i> <!-- Ícone de senha -->
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+
+            <!-- Confirm Password Input -->
+            <div class="input-container">
+                <i class="fas fa-lock"></i> <!-- Ícone de confirmar senha -->
                 <input type="password" id="confirm-password" placeholder="Confirm Password" required>
-              </div>
+            </div>
+            <div id="error-message" class="error-message">E-mail já existe</div>
+            <div id="password-error-message" class="error-message">As senhas não coincidem</div>
+            <button type="button" class="register-btn" onclick="register()">Register</button>
 
-              <button type="button" class="register-btn" onclick="window.location.href='../pages/chats.html'">Register</button>
-
-      
-              <p class="login-text">
+            <p class="login-text">
                 Already have an account? <a href="./index.html" class="login-link">Login</a>
-              </p>
+            </p>
         </form>
     </div>
+
     <div class="image-container">
         <img src="../assets/register_robot.png">
     </div>
+
     <script>
+        // Função para registrar o usuário
+        function register() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Limpa qualquer mensagem de erro anterior
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('password-error-message').style.display = 'none';
+
+            // Valida se os campos estão preenchidos
+            if (!name || !email || !password || !confirmPassword) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            // Verifica se as senhas coincidem
+            if (password !== confirmPassword) {
+                // Exibe a mensagem de erro para senhas não coincidentes
+                document.getElementById('password-error-message').style.display = 'block';
+                return;
+            }
+
+            // Envia os dados para o servidor via POST
+            fetch('http://localhost:3000/user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password
+                })
+            })
+            .then(response => {
+                if (response.status === 400) {
+                    // Se o status for 400, exibe a mensagem de erro (E-mail já existe)
+                    document.getElementById('error-message').style.display = 'block';
+                } else if (response.ok) {
+                    // Se o cadastro for bem-sucedido, redireciona para a página de login
+                    window.location.href = './index.html';
+                } else {
+                    alert('Erro inesperado, tente novamente mais tarde.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+                alert('Erro ao conectar ao servidor.');
+            });
+        }
+
         // Seleciona o link de "Login" e os elementos a serem movidos
         const loginBtn = document.querySelector('.login-link');
         const elementsToMove = document.querySelectorAll('.form-container, .register, .image-container'); // Itens a mover
         
         // Quando a página de registro for carregada, anima os elementos da direita para a esquerda
         window.addEventListener('load', function() {
-  // Atraso de 100ms para garantir que a página tenha carregado antes da animação
-  setTimeout(function() {
-    document.body.style.visibility = 'visible'; // Torna o corpo visível após o carregamento
-    elementsToMove.forEach(element => {
-      element.classList.add('move-right'); // Aplica a animação de movimento
-    });
-  }, 100);
-});
-      
+            setTimeout(function() {
+                document.body.style.visibility = 'visible'; // Torna o corpo visível após o carregamento
+                elementsToMove.forEach(element => {
+                    element.classList.add('move-right'); // Aplica a animação de movimento
+                });
+            }, 100);
+        });
+
         // Adiciona um evento de clique ao link de "Login"
         loginBtn.addEventListener('click', function(event) {
-          event.preventDefault(); // Impede o redirecionamento imediato
-          
-          // Para cada elemento, adicione a classe 'move-left' para animá-los
-          elementsToMove.forEach(element => {
-            element.classList.add('move-left');
-          });
-      
-          // Redireciona após 1 segundo (tempo da animação)
-          setTimeout(function() {
-            window.location.href = loginBtn.href; // Redireciona para a página de login
-          }, 500); // Atraso de 1 segundo para dar tempo de ver a animação
+            event.preventDefault(); // Impede o redirecionamento imediato
+            
+            // Para cada elemento, adicione a classe 'move-left' para animá-los
+            elementsToMove.forEach(element => {
+                element.classList.add('move-left');
+            });
+
+            // Redireciona após 1 segundo (tempo da animação)
+            setTimeout(function() {
+                window.location.href = loginBtn.href; // Redireciona para a página de login
+            }, 500); // Atraso de 1 segundo para dar tempo de ver a animação
         });
-      </script>
-      
+    </script>
 </body>
 </html>
