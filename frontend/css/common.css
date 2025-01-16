@@ -96,17 +96,13 @@
   
   @media screen and (max-width: 768px) {
     /* Ajuste da imagem */
-    .image-container {
-      width: 180px;
-      height: 180px; /* A imagem ocupa apenas metade da tela */
-      border-radius: 50%; /* Faz a imagem virar um círculo */
-      position: absolute;
-      margin-top: 4%;
-      margin-bottom: 1%;
-      border-radius: 50% 50% 50% 50%; /* Faz o topo circular */
+    .image-container {    
+      width: 150px;
+      height: 150px; /* A imagem ocupa apenas metade da tela */
+      margin-top: 2%;
+      border-radius: 50%; /* Faz o topo circular */
       overflow: hidden;
-      left: 30%;
-      transform: translateX(-50%); /* Centraliza horizontalmente */
+      left: 35%;
       z-index: 1; /* Garante que a imagem fique sobre o conteúdo de login */
       box-shadow: 0 0 10px rgba(255, 255, 255);
     }
@@ -121,7 +117,7 @@
         width: 80%;
         height: 90%;
         margin: 0 auto;
-        
+        margin-top: -4%;
         overflow: visible;
         background-color: rgb(30, 30, 30);
         padding: 20px;
@@ -144,15 +140,12 @@
 
     /* Ajuste da imagem */
   .image-container {
-    width: 200px;
-    height: 200px; /* A imagem ocupa apenas metade da tela */
-    border-radius: 50%; /* Faz a imagem virar um círculo */
-    position: absolute;
-    margin-top: 17%;
-    border-radius: 50% 50% 50% 50%; /* Faz o topo circular */
+    width: 150px;
+    height: 150px; /* A imagem ocupa apenas metade da tela */
+    margin-top: 2%;
+    border-radius: 50%; /* Faz o topo circular */
     overflow: hidden;
-    left: 30%;
-    transform: translateX(-50%); /* Centraliza horizontalmente */
+    left: 35%;
     z-index: 1; /* Garante que a imagem fique sobre o conteúdo de login */
     box-shadow: 0 0 10px rgba(255, 255, 255);
   }
@@ -166,8 +159,8 @@
   .form-container {
     width: 100%;
     height: 100%;
+    margin-top: -4%;
     margin: 0 auto;
-    overflow: visible;
     background-color: rgb(30, 30, 30);
     padding: 10px;
     box-shadow: none;

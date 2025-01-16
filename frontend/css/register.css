@@ -1,4 +1,3 @@
-  
   @keyframes moveRight {
     0% {
       transform: translateX(100%); /* Começa fora da tela à direita */
@@ -88,7 +87,6 @@
         text-decoration: underline;
       }
   
-
       @media screen and (max-width: 768px) {
 
         .register {
@@ -102,15 +100,7 @@
           position: relative;
           z-index: 0;
         }
-      
-        /* Ajuste do formulário */
 
-      
-
-      
-        /* Ajuste nos campos de entrada */
-
-      
         button.register-btn {
           width: 60%;
           padding: 15px;
