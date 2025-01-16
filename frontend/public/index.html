@@ -17,70 +17,106 @@
 
     <!-- Right Side with Login Form -->
     <div class="login">
-    <div class="form-container">
-      <form class="login-form">
-        <h2>Login</h2>
-      
-        <!-- Email Input -->
-        <div class="input-container">
-          <i class="fas fa-envelope"></i> <!-- Ícone de email -->
-          <input type="email" id="email" placeholder="Email" required>
-        </div>
-      
-        <!-- Password Input -->
-        <div class="input-container">
-          <i class="fas fa-lock"></i> <!-- Ícone de senha -->
-          <input type="password" id="password" placeholder="Password" required>
-        </div>
-      
-        <!-- Submit Button -->
-        <button type="button" class="login-btn" onclick="window.location.href='../pages/chats.html'">Sign-on</button>
-      
-        <!-- Register Link -->
-        <p class="register-text">
-          Don't have an account? <a href="./register.html" class="register-link" id="register-link">Register</a>
-        </p>
-      </form>
-      
+      <div class="form-container">
+        <form class="login-form" id="login-form">
+          <h2>Login</h2>
+
+          <!-- Error Message -->
+          
+
+          <!-- Email Input -->
+          <div class="input-container">
+            <i class="fas fa-envelope"></i> <!-- Ícone de email -->
+            <input type="email" id="email" placeholder="Email" required>
+          </div>
+
+          <!-- Password Input -->
+          <div class="input-container">
+            <i class="fas fa-lock"></i> <!-- Ícone de senha -->
+            <input type="password" id="password" placeholder="Password" required>
+          </div>
+          <div id="error-message" class="error-message">E-mail ou senha inválidos</div>
+          <!-- Submit Button -->
+          <button type="button" class="login-btn" onclick="login()">Sign-on</button>
+
+          <!-- Register Link -->
+          <p class="register-text">
+            Don't have an account? <a href="./register.html" class="register-link" id="register-link">Register</a>
+          </p>
+        </form>
+      </div>
     </div>
-    </div>
+
     <script>
+      function login() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Valida se os campos estão preenchidos
+        if (!email || !password) {
+          alert("Por favor, preencha todos os campos.");
+          return;
+        }
+
+        // Envia os dados para o servidor via POST
+        fetch('http://localhost:3000/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password
+          })
+        })
+        .then(response => {
+          if (response.status === 400) {
+            // Se o status for 400, exibe a mensagem de erro
+            document.getElementById('error-message').style.display = 'block';
+          } else if (response.ok) {
+            // Se o login for bem-sucedido, redireciona para a página de chats
+            window.location.href = '../pages/chats.html';
+          } else {
+            alert('Erro inesperado, tente novamente mais tarde.');
+          }
+        })
+        .catch(error => {
+          console.error('Erro na requisição:', error);
+          alert('Erro ao conectar ao servidor.');
+        });
+      }
+
       // Seleciona os elementos a serem movidos
-const elementsToMove = document.querySelectorAll('.form-container, .login, .image-container');
+      const elementsToMove = document.querySelectorAll('.form-container, .login, .image-container');
 
-// Ao carregar a página, aplique a animação de entrada
-window.addEventListener('load', function() {
-  // Atraso de 100ms para garantir que a página tenha carregado antes da animação
-  setTimeout(function() {
-    document.body.style.visibility = 'visible'; // Torna o corpo visível após o carregamento
-    elementsToMove.forEach(element => {
-      element.classList.add('move-right'); // Aplica a animação de movimento
-    });
-  }, 100);
-});
+      // Ao carregar a página, aplique a animação de entrada
+      window.addEventListener('load', function() {
+        // Atraso de 100ms para garantir que a página tenha carregado antes da animação
+        setTimeout(function() {
+          document.body.style.visibility = 'visible'; // Torna o corpo visível após o carregamento
+          elementsToMove.forEach(element => {
+            element.classList.add('move-right'); // Aplica a animação de movimento
+          });
+        }, 100);
+      });
 
-// Seleciona o link de "Register" e os elementos a serem movidos
-const registerBtn = document.getElementById('register-link');
+      // Seleciona o link de "Register" e os elementos a serem movidos
+      const registerBtn = document.getElementById('register-link');
 
-// Adiciona um evento de clique ao link de "Register"
-registerBtn.addEventListener('click', function(event) {
-  event.preventDefault(); // Impede o redirecionamento imediato
+      // Adiciona um evento de clique ao link de "Register"
+      registerBtn.addEventListener('click', function(event) {
+        event.preventDefault(); // Impede o redirecionamento imediato
 
-  // Para cada elemento, adicione a classe 'move-left' para animá-los
-  elementsToMove.forEach(element => {
-    element.classList.add('move-left');
-  });
+        // Para cada elemento, adicione a classe 'move-left' para animá-los
+        elementsToMove.forEach(element => {
+          element.classList.add('move-left');
+        });
 
-  // Redireciona após 1 segundo (tempo da animação)
-  setTimeout(function() {
-    window.location.href = registerBtn.href; // Redireciona para a página de registro
-  }, 500); // Atraso de 1 segundo para dar tempo de ver a animação
-});
-
+        // Redireciona após 1 segundo (tempo da animação)
+        setTimeout(function() {
+          window.location.href = registerBtn.href; // Redireciona para a página de registro
+        }, 500); // Atraso de 1 segundo para dar tempo de ver a animação
+      });
     </script>
-    
-    
-    
- 
 </body>
 </html>
