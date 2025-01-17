@@ -4,10 +4,13 @@ import { AppDataSource } from './data-source';
 import routes from './routes';
 import { errorMiddleware } from './middlewares/error';
 import cors from 'cors';
+import path from 'path';
 
 AppDataSource.initialize().then(() => {
     const app = express();
 
+
+    app.use(express.static(path.join(__dirname, '../../frontend/public')));
     // Habilitar o CORS para todas as origens
     app.use(cors());
 

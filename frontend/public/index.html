@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 </head>
 <body>
   
@@ -23,7 +22,7 @@
           <h2>Login</h2>
 
           <!-- Error Message -->
-          
+          <div id="error-message" class="error-message">E-mail ou senha inválidos</div>
 
           <!-- Email Input -->
           <div class="input-container">
@@ -36,13 +35,13 @@
             <i class="fas fa-lock"></i> <!-- Ícone de senha -->
             <input type="password" id="password" placeholder="Password" required>
           </div>
-          <div id="error-message" class="error-message">E-mail ou senha inválidos</div>
+
           <!-- Submit Button -->
           <button type="button" class="login-btn" onclick="login()">Sign-on</button>
 
           <!-- Register Link -->
           <p class="register-text">
-            Don't have an account? <a href="./register.html" class="register-link" id="register-link">Register</a>
+            Don't have an account? <a href="http://localhost:3000/register-page" class="register-link" id="register-link">Register</a>
           </p>
         </form>
       </div>
@@ -70,15 +69,18 @@
             password: password
           })
         })
-        .then(response => {
-          if (response.status === 400) {
-            // Se o status for 400, exibe a mensagem de erro
-            document.getElementById('error-message').style.display = 'block';
-          } else if (response.ok) {
-            // Se o login for bem-sucedido, redireciona para a página de chats
-            window.location.href = '../pages/chats.html';
+        .then(response => response.json()) // Parseia a resposta em JSON
+        .then(data => {
+          if (data.token) {
+            // Se o login for bem-sucedido, armazena o token e os dados do usuário no localStorage
+            localStorage.setItem('user', JSON.stringify(data.user));
+            localStorage.setItem('token', data.token);
+
+            // Redireciona para a página de chats
+            window.location.href = 'http://localhost:3000/chats-page';
           } else {
-            alert('Erro inesperado, tente novamente mais tarde.');
+            // Se o login falhou, exibe a mensagem de erro
+            document.getElementById('error-message').style.display = 'block';
           }
         })
         .catch(error => {
