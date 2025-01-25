@@ -52,13 +52,11 @@
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        // Valida se os campos estão preenchidos
         if (!email || !password) {
           alert("Por favor, preencha todos os campos.");
           return;
         }
 
-        // Envia os dados para o servidor via POST
         fetch('http://localhost:3000/login', {
           method: 'POST',
           headers: {
@@ -69,23 +67,50 @@
             password: password
           })
         })
-        .then(response => response.json()) // Parseia a resposta em JSON
+        .then(response => response.json())
         .then(data => {
           if (data.token) {
-            // Se o login for bem-sucedido, armazena o token e os dados do usuário no localStorage
-            localStorage.setItem('user', JSON.stringify(data.user));
-            localStorage.setItem('token', data.token);
+            // Armazena o token no cookie com uma expiração de 1 dia
+            document.cookie = `token=${data.token}; path=/; max-age=${60 * 60 * 24}`; // 1 dia
 
             // Redireciona para a página de chats
             window.location.href = 'http://localhost:3000/chats-page';
           } else {
-            // Se o login falhou, exibe a mensagem de erro
             document.getElementById('error-message').style.display = 'block';
           }
         })
         .catch(error => {
           console.error('Erro na requisição:', error);
           alert('Erro ao conectar ao servidor.');
+        });
+      }
+
+      // Função para recuperar o token do cookie
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+      }
+
+      // Exemplo de como adicionar o token nas requisições subsequentes
+      function fetchData() {
+        const token = getCookie('token');
+        
+        fetch('http://localhost:3000/protected-page', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Dados protegidos:', data);
+        })
+        .catch(error => {
+          console.error('Erro na requisição protegida:', error);
+          window.location.href = 'http://localhost:3000/login'; // Redireciona para login se o token for inválido
         });
       }
 

@@ -25,7 +25,7 @@ routes.get('/register-page', (req, res) => {
 routes.use(authMiddleware)
 routes.post('/profile', new UserController().getProfile)
 routes.get('/chats-page', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/public', 'chats.html'));
+    res.sendFile(path.join(__dirname, '../../frontend/public/pages', 'chats.html'));
   });
 
 export default routes

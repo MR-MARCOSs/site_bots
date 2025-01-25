@@ -1,32 +1,41 @@
 import { NextFunction, Request, Response } from 'express';
 import { UnauthorizedError } from '../helpers/api-errors';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 import { userRepository } from '../repositories/userRepository';
 
 type JwtPayload = {
-    id: number
+    id: number;
 }
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
-    const { authorization } = req.headers
+    // Recuperando o token dos cookies
+    const token = req.cookies.token;
 
-        if (!authorization) {
-            throw new UnauthorizedError('Não autorizado')
-        }
+    console.log(token);
 
-        const token = authorization.split(' ')[1]
+    if (!token) {
+        throw new UnauthorizedError('Não autorizado');
+    }
 
-        const { id } = jwt.verify(token, process.env.JWT_PASS ?? '') as JwtPayload
+    try {
+        // Verificando e decodificando o token
+        const { id } = jwt.verify(token, process.env.JWT_PASS ?? '') as JwtPayload;
 
-        const user = await userRepository.findOneBy({ id })
+        // Buscando o usuário no banco de dados com o id extraído do token
+        const user = await userRepository.findOneBy({ id });
 
         if (!user) {
-            throw new UnauthorizedError('E-mail ou senha inválidos')
+            throw new UnauthorizedError('E-mail ou senha inválidos');
         }
 
-        const { password:_, ...loggedUser} = user
+        // Excluindo a senha do usuário para não ser enviada
+        const { password: _, ...loggedUser } = user;
 
-        req.user = loggedUser
+        // Adicionando os dados do usuário ao objeto da requisição
+        req.user = loggedUser;
 
-        next()
-}
+        next();
+    } catch (error) {
+        throw new UnauthorizedError('Token inválido ou expirado');
+    }
+};
