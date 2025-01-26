@@ -14,7 +14,7 @@ AppDataSource.initialize().then(() => {
     const app = express();
 
 
-    app.use(express.static(path.join(__dirname, '../../frontend/public')));
+    app.use(express.static(path.join(__dirname, '../../frontend')));
     // Habilitar o CORS para todas as origens
     app.use(cors({
         origin: 'http://localhost:3000',  // URL do seu frontend

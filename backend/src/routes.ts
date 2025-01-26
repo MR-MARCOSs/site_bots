@@ -8,8 +8,7 @@ import path from 'path';
 
 const routes = Router()
 
-routes.post('/get-response', new ChatController().getBotResponse);
-routes.get('/get-chat', new ChatController().list);
+
 routes.get('/get-bots', new BotsController().list)
 routes.post('/user', new UserController().create)
 routes.post('/login', new LoginController().login)
@@ -25,7 +24,9 @@ routes.get('/register-page', (req, res) => {
 routes.use(authMiddleware)
 routes.post('/profile', new UserController().getProfile)
 routes.get('/chats-page', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/public/pages', 'chats.html'));
+    res.sendFile(path.join(__dirname, '../../frontend/private', 'chats.html'));
   });
+routes.post('/get-response', new ChatController().getBotResponse);
+routes.get('/get-chat', new ChatController().list);
 
 export default routes
