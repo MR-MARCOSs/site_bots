@@ -1,4 +1,4 @@
 import { AppDataSource } from "../data-source";
-import { Message } from "../entities/Message";
+import { Chat } from "../entities/Chat";
 
-export const messageRepository = AppDataSource.getRepository(Message)
+export const chatRepository = AppDataSource.getRepository(Chat)

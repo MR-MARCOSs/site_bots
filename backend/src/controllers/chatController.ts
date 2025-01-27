@@ -2,11 +2,14 @@ import { Request, Response } from 'express';
 import { fetchBotResponse } from '../services/botService';
 import { messageRepository } from '../repositories/messageRepository';
 import { BadRequestError } from '../helpers/api-errors';
+import { chatRepository } from '../repositories/chatRepository';
 
 export class ChatController {
     async getBotResponse(req: Request, res: Response): Promise<void> {
         const userMessage = req.body;
-        const chatId = 
+        const user = req.user;
+        const userId = user.id; // Aqui estamos pegando o id do usuário
+        const chatId = await chatRepository.findOneBy({ id: userId });
         if (!chatId || !userMessage) {
             throw new BadRequestError('chatId and userMessage are required.')
         }
