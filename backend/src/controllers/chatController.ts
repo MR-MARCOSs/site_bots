@@ -9,7 +9,31 @@ export class ChatController {
         const userMessage = req.body;
         const user = req.user;
         const userId = user.id; // Aqui estamos pegando o id do usuário
-        const chatId = await chatRepository.findOneBy({ id: userId });
+        const botId = req.body;
+        const chat = await chatRepository.find({
+            where: {
+              user: { id: userId },  // Relacionamento com o 'user' e id do usuário
+              bot: { id: botId }     // Relacionamento com o 'bot' e id do bot
+            }
+          });
+          if (chat.length > 0) {
+            const chatId = chat[0].id;  // Pega o id do primeiro chat encontrado
+            console.log(`Chat ID: ${chatId}`);
+          } else {
+            // Se não encontrou um chat, cria um novo
+            const chat = chatRepository.create({
+              user: { id: userId },
+              bot: { id: botId },
+              status: 'open'  // Definindo o status como 'open', mas você pode ajustar conforme necessário
+            });
+          
+            // Salva o novo chat e obtém o id
+            const savedChat = await chatRepository.save(chat);
+            const chatId = savedChat.id;
+          
+            console.log(`Novo chat criado com ID: ${chatId}`);
+          }
+          
         if (!chatId || !userMessage) {
             throw new BadRequestError('chatId and userMessage are required.')
         }
