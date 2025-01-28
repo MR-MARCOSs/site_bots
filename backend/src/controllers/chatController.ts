@@ -6,10 +6,15 @@ import { chatRepository } from '../repositories/chatRepository';
 
 export class ChatController {
     async getBotResponse(req: Request, res: Response): Promise<void> {
-        const userMessage = req.body;
+        const body = req.body
+        const userMessage = body.userMessage;
         const user = req.user;
         const userId = user.id; // Aqui estamos pegando o id do usuário
-        const botId = req.body;
+        console.log(userId);
+        const botId = body.botId;
+
+        console.log(botId);
+        let chatId;
         const chat = await chatRepository.find({
             where: {
               user: { id: userId },  // Relacionamento com o 'user' e id do usuário
@@ -17,7 +22,7 @@ export class ChatController {
             }
           });
           if (chat.length > 0) {
-            const chatId = chat[0].id;  // Pega o id do primeiro chat encontrado
+            chatId = chat[0].id;  // Pega o id do primeiro chat encontrado
             console.log(`Chat ID: ${chatId}`);
           } else {
             // Se não encontrou um chat, cria um novo
@@ -26,18 +31,19 @@ export class ChatController {
               bot: { id: botId },
               status: 'open'  // Definindo o status como 'open', mas você pode ajustar conforme necessário
             });
-          
             // Salva o novo chat e obtém o id
             const savedChat = await chatRepository.save(chat);
-            const chatId = savedChat.id;
-          
+            chatId = savedChat.id;
             console.log(`Novo chat criado com ID: ${chatId}`);
           }
-          
+          console.log(chatId);
+          console.log(userMessage);
         if (!chatId || !userMessage) {
             throw new BadRequestError('chatId and userMessage are required.')
         }
         // 2. Obtém a resposta do bot
+        console.log("2");
+        
         const botResponse = await fetchBotResponse(userMessage);
         console.log('Bot response:', botResponse);
 
