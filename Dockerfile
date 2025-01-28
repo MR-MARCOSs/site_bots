@@ -5,23 +5,16 @@ FROM node:18 AS builder
 WORKDIR /app
 
 # Copiar o package.json e o package-lock.json (caso tenha) da pasta backend
-COPY ./backend/package*.json ./ 
+COPY ./backend/package*.json ./
 
-# Instalar dependências de desenvolvimento e produção dentro da pasta backend
+# Instalar dependências de desenvolvimento
 RUN npm install
-RUN npm install --save-dev @types/express @types/mysql @types/cookie-parser @types/cors @types/axios @types/jsonwebtoken @types/bcrypt @types/reflect-metadata
 
 # Copiar o restante dos arquivos do backend (incluindo o código-fonte TypeScript)
-COPY ./backend /app/backend
+COPY ./backend /app
 
-# Instalar dependências de produção (se houver)
-RUN npm install --only=production
-
-# Instalar o TypeScript globalmente
-RUN npm install -g typescript
-
-# Compilar o TypeScript (assumindo que o tsconfig.json está corretamente configurado)
-RUN tsc
+# Compilar o TypeScript
+RUN npm run build  # Certifique-se de que você tenha um script "build" no package.json que rode "tsc"
 
 # Etapa 2: Configuração para rodar o backend com o frontend
 FROM node:18
@@ -29,8 +22,14 @@ FROM node:18
 # Definir diretório de trabalho
 WORKDIR /app
 
-# Copiar apenas os arquivos necessários do container "builder"
-COPY --from=builder /app/backend /app/backend
+# Copiar apenas os arquivos compilados do container "builder"
+COPY --from=builder /app/dist /app/dist
+
+# Copiar o package.json e o package-lock.json para o novo contêiner
+COPY ./backend/package*.json ./backend/
+
+# Instalar as dependências de produção
+RUN npm install --only=production
 
 # Copiar a pasta do frontend para dentro do container
 COPY ./frontend /app/frontend

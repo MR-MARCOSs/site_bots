@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2018",
-    "lib": ["es6", "ES2018"],
+    "target": "es2020",  // Alterar de es2018 para es2020
+    "lib": ["es2020", "esnext"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "module": "commonjs",
