@@ -37,5 +37,5 @@ COPY ./frontend /app/frontend
 # Expor a porta onde o backend vai rodar
 EXPOSE 3000
 
-# Rodar o comando para iniciar o servidor
-CMD ["npm", "run", "dev", "--prefix", "backend"]
+# Rodar o comando para iniciar o servidor (ajustado para o caminho correto)
+CMD ["npm", "run", "dev", "--prefix", "."]
