@@ -1,19 +1,20 @@
 # Etapa 1: Construção da imagem para o backend
 FROM node:18 AS builder
 
-# Definir diretório de trabalho no container
-WORKDIR /app
+# Definir diretório de trabalho no container para a pasta backend
+WORKDIR /app/backend
 
-# Copiar o package.json e o package-lock.json (caso tenha)
+# Copiar o package.json e o package-lock.json (caso tenha) da pasta backend
 COPY ./backend/package*.json ./
 
-# Instalar dependências
+# Instalar dependências de desenvolvimento e produção dentro da pasta backend
 RUN npm install
+RUN npm install --save-dev @types/node
 
 # Copiar o restante dos arquivos do backend (incluindo o código-fonte TypeScript)
-COPY ./backend /app
+COPY ./backend /app/backend
 
-# Instalar dependências de produção (pode ser usado se você tiver devDependencies)
+# Instalar dependências de produção (se houver)
 RUN npm install --only=production
 
 # Instalar o TypeScript globalmente
@@ -29,7 +30,7 @@ FROM node:18
 WORKDIR /app
 
 # Copiar apenas os arquivos necessários do container "builder"
-COPY --from=builder /app /app
+COPY --from=builder /app/backend /app/backend
 
 # Copiar a pasta do frontend para dentro do container
 COPY ./frontend /app/frontend
@@ -37,5 +38,5 @@ COPY ./frontend /app/frontend
 # Expor a porta onde o backend vai rodar
 EXPOSE 3000
 
-# Rodar o comando para iniciar o servidor, como você faria localmente
-CMD ["npm", "run", "dev"]
+# Rodar o comando para iniciar o servidor
+CMD ["npm", "run", "dev", "--prefix", "backend"]

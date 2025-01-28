@@ -14,7 +14,8 @@
     "strict": true,
     "noImplicitAny": true,
     "strictPropertyInitialization": false,
-    "typeRoots": ["./src/@types"]
+    "types": ["node"],  // Adicionado para garantir que os tipos do Node.js sejam usados
+    "typeRoots": ["node_modules/@types", "./src/@types"]  // Incluindo o diretório de tipos global do Node
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"],
