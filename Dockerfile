@@ -1,23 +1,23 @@
 # Etapa 1: Construção da imagem para o backend
 FROM node:18 AS builder
 
-# Definir diretório de trabalho no container para a pasta /app
 WORKDIR /app
 
 # Copiar o package.json e o package-lock.json da pasta backend
-COPY ./backend/package*.json ./
+COPY ./backend/package*.json ./  # Certifique-se de que o caminho está correto
 
-# Instalar as dependências de desenvolvimento
+# Instalar as dependências
 RUN npm install
 
-# Copiar todos os arquivos da pasta backend para o diretório de trabalho /app
-COPY ./backend /app
+# Copiar todos os arquivos da pasta backend para o diretório /app
+COPY ./backend /app  # Certifique-se de que o diretório 'backend' está correto e é acessível
 
 # Verificar se a estrutura foi copiada corretamente
 RUN ls -R /app/backend
 
 # Compilar o TypeScript
 RUN npm run build  # Certifique-se de que você tenha um script "build" no package.json que rode "tsc"
+
 
 # Etapa 2: Configuração para rodar o backend com o frontend
 FROM node:18
