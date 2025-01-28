@@ -31,6 +31,9 @@ COPY ./backend/package*.json ./
 # Instalar as dependências, incluindo as de desenvolvimento
 RUN npm install
 
+# Instalar nodemon globalmente
+RUN npm install -g nodemon
+
 # Copiar a pasta do frontend para dentro do container
 COPY ./frontend /app/frontend
 
