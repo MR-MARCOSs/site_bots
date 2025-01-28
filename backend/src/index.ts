@@ -15,11 +15,10 @@ AppDataSource.initialize().then(() => {
 
 
     app.use(express.static(path.join(__dirname, '../../frontend')));
-    // Habilitar o CORS para todas as origens
     app.use(cors({
-        origin: 'http://localhost:3000',  // URL do seu frontend
+        origin: 'http://localhost:3000',  
         methods: ['GET', 'POST'],
-        allowedHeaders: ['Content-Type', 'Authorization']  // Permite o header Authorization
+        allowedHeaders: ['Content-Type', 'Authorization']
     }));
     app.use(cookieParser());
     app.use(express.json());
