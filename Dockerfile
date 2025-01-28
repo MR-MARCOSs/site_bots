@@ -9,7 +9,7 @@ COPY ./backend/package*.json ./
 
 # Instalar dependências de desenvolvimento e produção dentro da pasta backend
 RUN npm install
-RUN npm install --save-dev @types/express @types/mysql @types/cookie-parser @types/cors @types/express-async-errors @types/axios @types/jsonwebtoken @types/bcrypt @types/reflect-metadata
+RUN npm install --save-dev @types/express @types/mysql @types/cookie-parser @types/cors @types/axios @types/jsonwebtoken @types/bcrypt @types/reflect-metadata
 
 # Copiar o restante dos arquivos do backend (incluindo o código-fonte TypeScript)
 COPY ./backend /app/backend
