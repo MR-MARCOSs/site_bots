@@ -37,4 +37,4 @@ COPY ./frontend /app/frontend
 EXPOSE 3000
 
 # Comando para rodar a aplicação
-CMD ["nodemon", "--exec", "ts-node", "/app/src/index.ts"]
+CMD ["nodemon", "--exec", "ts-node", "/app/backend/src/index.ts"]
