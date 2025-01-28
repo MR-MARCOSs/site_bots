@@ -1,14 +1,14 @@
 FROM node:18 AS builder
 
-WORKDIR /app
+WORKDIR /app/backend
 
-# Copia os arquivos package.json e package-lock.json para o diretório /app
+# Copia os arquivos package.json e package-lock.json para o diretório /app/backend
 COPY ./backend/package*.json ./
 
 # Instala as dependências
 RUN npm install
 
-# Copia todo o conteúdo do diretório backend para /app
+# Copia todo o conteúdo do diretório backend para /app/backend
 COPY ./backend .
 
 # Executa o build (se necessário)
@@ -16,12 +16,12 @@ RUN npm run build
 
 FROM node:18
 
-WORKDIR /app
+WORKDIR /app/backend
 
 # Copia os arquivos compilados do estágio builder
-COPY --from=builder /app/dist /app/dist
+COPY --from=builder /app/backend/dist /app/backend/dist
 
-# Copia os arquivos package.json e package-lock.json para o diretório /app
+# Copia os arquivos package.json e package-lock.json para o diretório /app/backend
 COPY ./backend/package*.json ./
 
 # Instala apenas as dependências de produção
@@ -35,6 +35,6 @@ COPY ./frontend /app/frontend
 
 # Expõe a porta 3000
 EXPOSE 3000
-
+RUN ls -R /app
 # Comando para rodar a aplicação
-CMD ["nodemon", "--exec", "ts-node", "/app/backend/src/index.ts"]
+#CMD ["nodemon", "--exec", "ts-node", "/app/backend/src/index.ts"]
