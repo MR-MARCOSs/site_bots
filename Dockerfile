@@ -2,7 +2,7 @@
 FROM node:18 AS builder
 
 # Definir diretório de trabalho no container para a pasta backend
-WORKDIR /app/backend
+WORKDIR /app
 
 # Copiar o package.json e o package-lock.json (caso tenha) da pasta backend
 COPY ./backend/package*.json ./ 
