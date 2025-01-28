@@ -5,11 +5,11 @@ FROM node:18 AS builder
 WORKDIR /app/backend
 
 # Copiar o package.json e o package-lock.json (caso tenha) da pasta backend
-COPY ./backend/package*.json ./
+COPY ./backend/package*.json ./ 
 
 # Instalar dependências de desenvolvimento e produção dentro da pasta backend
 RUN npm install
-RUN npm install --save-dev @types/node
+RUN npm install --save-dev @types/express @types/mysql @types/cookie-parser @types/cors @types/express-async-errors @types/axios @types/jsonwebtoken @types/bcrypt @types/reflect-metadata
 
 # Copiar o restante dos arquivos do backend (incluindo o código-fonte TypeScript)
 COPY ./backend /app/backend
