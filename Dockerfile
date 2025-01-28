@@ -26,7 +26,7 @@ WORKDIR /app
 COPY --from=builder /app/dist /app/dist
 
 # Copiar o package.json e o package-lock.json para o novo contêiner
-COPY ./backend/package*.json ./backend/
+COPY ./backend/package*.json ./
 
 # Instalar as dependências de produção
 RUN npm install --only=production
