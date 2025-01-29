@@ -14,7 +14,9 @@ AppDataSource.initialize().then(() => {
     const app = express();
 
 
-    app.use(express.static(path.join(__dirname, '../../frontend')));
+    app.use(express.static('dist/public'));
+    app.use(express.static('dist/private'));
+
     app.use(cors({
         origin: 'http://localhost:3000',  
         methods: ['GET', 'POST'],

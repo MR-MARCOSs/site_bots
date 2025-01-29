@@ -5,6 +5,7 @@ import { UserController } from "./controllers/userController";
 import { LoginController } from "./controllers/loginController";
 import { authMiddleware } from "./middlewares/authMiddleware";
 import path from 'path';
+import express from 'express';
 
 const routes = Router()
 
@@ -15,17 +16,18 @@ routes.post('/login', new LoginController().login)
 
 
 routes.get('/login-page', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../usr/share/nginx/html', 'index.html'));
+  res.sendFile(path.join(__dirname, '../public', 'index.html')); // caminho relativo corrigido
 });
+
 routes.get('/register-page', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../usr/share/nginx/html', 'register.html'));
+  res.sendFile(path.join(__dirname, '../public', 'register.html')); // caminho relativo corrigido
 });
 
 routes.use(authMiddleware)
 routes.post('/profile', new UserController().getProfile)
 routes.get('/chats-page', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/private', 'chats.html'));
-  });
+  res.sendFile(path.join(__dirname, '../private', 'chats.html'));
+});
 routes.post('/get-response', new ChatController().getBotResponse);
 routes.get('/get-chat', new ChatController().list);
 
