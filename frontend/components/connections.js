@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Carregar os bots
 let botId = null;  // Variável para armazenar o ID do bot selecionado
 
-fetch('http://localhost:3000/get-bots') 
+fetch('https://site-bots.onrender.com/get-bots') 
     .then(response => response.json())
     .then(dados => {
         console.log(dados);
@@ -57,7 +57,7 @@ function selectBot(item) {
     botId = item.getAttribute('data-id');  // Armazena o ID do bot selecionado
     console.log(botId);
 
-    fetch('http://localhost:3000/get-bots')
+    fetch('https://site-bots.onrender.com/get-bots')
         .then(response => response.json())
         .then(dados => {
             const bot = dados.find(d => d.name === botName);
@@ -103,7 +103,7 @@ function sendMessage() {
     }
 
     // Chama a rota para obter a resposta do bot
-    fetch('http://localhost:3000/get-response', {
+    fetch('https://site-bots.onrender.com/get-response', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

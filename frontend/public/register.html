@@ -45,7 +45,7 @@
             <button type="button" class="register-btn" onclick="register()">Register</button>
 
             <p class="login-text">
-                Already have an account? <a href="http://localhost:3000/login-page" class="login-link">Login</a>
+                Already have an account? <a href="https://site-bots.onrender.com/login-page" class="login-link">Login</a>
             </p>
         </form>
     </div>
@@ -80,7 +80,7 @@
             }
 
             // Envia os dados para o servidor via POST
-            fetch('http://localhost:3000/user', {
+            fetch('https://site-bots.onrender.com/user', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -97,7 +97,7 @@
                     document.getElementById('error-message').style.display = 'block';
                 } else if (response.ok) {
                     // Se o cadastro for bem-sucedido, redireciona para a página de login
-                    window.location.href = 'http://localhost:3000/login-page';
+                    window.location.href = 'https://site-bots.onrender.com/login-page';
                 } else {
                     alert('Erro inesperado, tente novamente mais tarde.');
                 }

@@ -41,7 +41,7 @@
 
           <!-- Register Link -->
           <p class="register-text">
-            Don't have an account? <a href="http://localhost:3000/register-page" class="register-link" id="register-link">Register</a>
+            Don't have an account? <a href="https://site-bots.onrender.com/register-page" class="register-link" id="register-link">Register</a>
           </p>
         </form>
       </div>
@@ -57,7 +57,7 @@
           return;
         }
 
-        fetch('http://localhost:3000/login', {
+        fetch('https://site-bots.onrender.com/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -74,7 +74,7 @@
             document.cookie = `token=${data.token}; path=/; max-age=${60 * 60 * 24}`; // 1 dia
 
             // Redireciona para a página de chats
-            window.location.href = 'http://localhost:3000/chats-page';
+            window.location.href = 'https://site-bots.onrender.com/chats-page';
           } else {
             document.getElementById('error-message').style.display = 'block';
           }
@@ -97,7 +97,7 @@
       function fetchData() {
         const token = getCookie('token');
         
-        fetch('http://localhost:3000/protected-page', {
+        fetch('https://site-bots.onrender.com/protected-page', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -110,7 +110,7 @@
         })
         .catch(error => {
           console.error('Erro na requisição protegida:', error);
-          window.location.href = 'http://localhost:3000/login'; // Redireciona para login se o token for inválido
+          window.location.href = 'https://site-bots.onrender.com/login'; // Redireciona para login se o token for inválido
         });
       }
 
