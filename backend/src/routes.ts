@@ -13,6 +13,7 @@ routes.get('/get-bots', new BotsController().list)
 routes.post('/user', new UserController().create)
 routes.post('/login', new LoginController().login)
 
+
 routes.get('/login-page', (req, res) => {
     res.sendFile(path.join(__dirname, '../../frontend/public', 'index.html'));
   });

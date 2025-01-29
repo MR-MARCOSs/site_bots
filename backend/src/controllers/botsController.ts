@@ -1,3 +1,4 @@
+import { BadRequestError } from "../helpers/api-errors";
 import { BotsRepository } from "../repositories/botsRepository";
 import { Request, Response } from 'express';
 
@@ -7,4 +8,6 @@ export class BotsController {
         const bots = await BotsRepository.find()
         res.status(200).json(bots);
     }
-}
+    }
+    
+
