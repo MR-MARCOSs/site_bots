@@ -7,32 +7,37 @@ import cors from 'cors';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 
-// Use cookie-parser antes das rotas que utilizam os cookies
-
-
+// Inicializa a conexão com o banco de dados
 AppDataSource.initialize().then(() => {
     const app = express();
 
+    // Configura o middleware para servir arquivos estáticos
+    app.use(express.static(path.join(__dirname, '../frontend')));
 
-    app.use(express.static('dist/public'));
-    app.use(express.static('dist/private'));
-
+    // Configura o CORS
     app.use(cors({
-        origin: 'http://localhost:3000',  
+        origin: 'http://localhost:3000',  // Ajuste conforme necessário
         methods: ['GET', 'POST'],
         allowedHeaders: ['Content-Type', 'Authorization']
     }));
+
+    // Configura o cookie-parser
     app.use(cookieParser());
+
+    // Configura o middleware para parsear JSON
     app.use(express.json());
 
+    // Configura as rotas
     app.use(routes);
 
-    // Middleware de erro deve ser registrado após todas as rotas
+    // Configura o middleware de erro (deve ser registrado após todas as rotas)
     app.use(errorMiddleware);
 
-    // Definir a porta
+    // Define a porta
     const port = process.env.PORT || 3000;
     return app.listen(port, () => {
         console.log(`Server running at http://localhost:${port}`);
     });
+}).catch(error => {
+    console.error('Error during Data Source initialization:', error);
 });
