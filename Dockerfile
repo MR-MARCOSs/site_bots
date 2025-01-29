@@ -35,8 +35,5 @@ COPY --from=frontend /usr/share/nginx/html /usr/share/nginx/html
 # Expõe as portas
 EXPOSE 3000 80
 
-# Variáveis de ambiente
-ENV NODE_ENV=production
-
 # Comando para iniciar o servidor Node.js
 CMD ["npm", "run", "dev"]

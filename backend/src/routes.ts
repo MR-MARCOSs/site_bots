@@ -15,12 +15,11 @@ routes.post('/login', new LoginController().login)
 
 
 routes.get('/login-page', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/public', 'index.html'));
-  });
+  res.sendFile(path.join(__dirname, '../../usr/share/nginx/html', 'index.html'));
+});
 routes.get('/register-page', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/public', 'register.html'));
-  });
-
+  res.sendFile(path.join(__dirname, '../../usr/share/nginx/html', 'register.html'));
+});
 
 routes.use(authMiddleware)
 routes.post('/profile', new UserController().getProfile)
