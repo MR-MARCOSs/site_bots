@@ -1,40 +1,42 @@
-FROM node:18 AS builder
+# Etapa 1: Construção do backend (Node.js)
+FROM node:18 AS backend
 
-WORKDIR /app/backend
+# Diretório de trabalho dentro do container
+WORKDIR /app
 
-# Copia os arquivos package.json e package-lock.json para o diretório /app/backend
+# Copia os arquivos do backend para o diretório do container
 COPY ./backend/package*.json ./
+COPY ./backend/tsconfig.json ./
+COPY ./backend/src ./src
 
-# Instala as dependências
+
+# Instala as dependências do backend
 RUN npm install
 
-# Copia todo o conteúdo do diretório backend para /app/backend
-COPY ./backend .
+# Compila o código TypeScript para JavaScript
+RUN npx tsc
 
-# Executa o build (se necessário)
-RUN npm run build
+# Etapa 2: Servindo o frontend
+FROM nginx:alpine AS frontend
 
+# Copia o conteúdo estático do frontend para o nginx
+COPY ./frontend /usr/share/nginx/html
+
+# Etapa 3: Configuração final do container (backend + nginx)
 FROM node:18
 
-WORKDIR /app/backend
+# Diretório de trabalho do container
+WORKDIR /app
 
-# Copia os arquivos compilados do estágio builder
-COPY --from=builder /app/backend/dist /app/backend/dist
+# Copia as dependências do backend e frontend para dentro do container
+COPY --from=backend /app /app
+COPY --from=frontend /usr/share/nginx/html /usr/share/nginx/html
 
-# Copia os arquivos package.json e package-lock.json para o diretório /app/backend
-COPY ./backend/package*.json ./
+# Expõe as portas
+EXPOSE 3000 80
 
-# Instala apenas as dependências de produção
-RUN npm install --only=production
+# Variáveis de ambiente
+ENV NODE_ENV=production
 
-# Instala o nodemon globalmente
-RUN npm install -g nodemon
-
-# Copia o frontend para o diretório /app/frontend
-COPY ./frontend /app/frontend
-
-# Expõe a porta 3000
-EXPOSE 3000
-RUN ls -R /app
-# Comando para rodar a aplicação
-#CMD ["nodemon", "--exec", "ts-node", "/app/backend/src/index.ts"]
+# Comando para iniciar o servidor Node.js
+CMD ["npm", "run", "dev"]
