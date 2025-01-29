@@ -16,10 +16,11 @@ AppDataSource.initialize().then(() => {
 
     // Configura o CORS
     app.use(cors({
-        origin: 'http://localhost:3000',  // Ajuste conforme necessário
+        origin: 'https://site-bots.onrender.com',  
         methods: ['GET', 'POST'],
         allowedHeaders: ['Content-Type', 'Authorization']
     }));
+    
 
     // Configura o cookie-parser
     app.use(cookieParser());
